@@ -1,0 +1,85 @@
+.gbfl { float: left; }
+.gbfr { float: right; }
+.gbhead1 { background: url(/static/before/images/xgb36.png) repeat; width: 100%; height: 32px; }
+.gbhedcontain { width: 1200px; margin: 0 auto; zoom: 1; clear: both; height: 32px; overflow: hidden; }
+.gbhedcontain>p { float: left; width: 400px; color: #fff; display: block; font-size: 14px; line-height: 32px; }
+.gbhedcontain>p img { display: inline-block; width: 20px; height: 20px; margin-right: 5px; vertical-align: -5px; }
+.gbhdconul1 { float: right; }
+.gbhdconul1 li { font-size: 14px; color: #fff; line-height: 32px; }
+.gbhdconul1 li a { font-size: 14px; color: #fff; line-height: 32px; }
+.gbhdcon { width: 1200px; display: block; zoom: 1; clear: both; margin: 0 auto; height: 105px; }
+.gbhdzs { background: url(/static/before/images/xgb1.png) no-repeat; background-size: 21px 21px; background-position: 0px 4px; padding-left: 25px; }
+.gbhead2 { background: #ffe7dc; padding-top: 25px; height: 165px; }
+.gblogo a { display: block; width: 150px;/* height:72px; */ }
+.gblogo a img { display: block; width: 150px;/* height:72px; */ }
+.gbsecdivaa { float: left; width: 600px; margin: 20px 0 0 120px; }
+.gbsearch { width: 600px; height: 40px; line-height: 40px; background: #fff; border-radius: 20px; }
+.gbssp { font-size: 12px; color: #ff6600; width: 570px; line-height: 32px; padding: 0px 15px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.gbsearch input { float: left; background: none; border: none; outline: none; }
+.gbsearch .inp_text { height: 40px; width: 500px; padding-left: 44px; line-height: 40px; font-size: 14px; background: url(/static/before/images/xgb37.png) no-repeat 11px 9px; }
+.gbsearch .inp_sub { float: right; width: 36px; height: 40px; line-height: 40px; background: #fff; font-size: 16px; color: #FF6600; cursor: pointer; margin-right: 16px; }
+.gbhykh { margin-top: 20px; }
+.gbssp a { font-size: 12px; color: #ff6600; margin-left: 10px; }
+.wxewmli { }
+.wxewm { position: absolute; top: 31px; background: #fff; padding: 5px; width: 138px; height: 138px; display: none; z-index: 1; border: 1px solid #eee; border-radius: 0px 0px 12px 12px; }
+.wxewm img { display: block; width: 100%; }
+.gbnav { display: block; width: 1200px; clear: both; margin: 0 auto; zoom: 1; height: 70px; }
+.gbsjfl { float: left; display: block; position: relative; width: 240px; }
+.gbsjfl span { height: 70px; display: block; background: url(/static/before/images/xgb32.png) no-repeat; background-position: center; font-size: 18px; color: #fff; text-align: center; line-height: 60px; }
+.gbsjfl span i { width: 22px; height: 20px; display: inline-block; background: url(/static/before/images/xgb38.png) no-repeat; background-position: top; vertical-align: -3px; margin-right: 5px }
+.gbsjfl ul { position: absolute; top: 31px; left: 0px; background: url(/static/before/images/xgb6.png) no-repeat; height: 328px; padding: 20px 30px 0px 30px; }
+.gbsjfl ul li { margin-top: 10px; height: 92px; overflow: hidden; }
+.gbsjfl ul li p { font-size: 17px; color: #fff; padding-left: 30px; height: 40px; line-height: 40px; }
+.gbsjfl ul li p.sxf1 { background: url(/static/before/images/xgb2.png) no-repeat; background-size: 26px 26px; background-position: 0px; }
+.gbsjfl ul li p.sxf2 { background: url(/static/before/images/xgb3.png) no-repeat; background-size: 26px 26px; background-position: 0px; }
+.gbsjfl ul li p.sxf3 { background: url(/static/before/images/xgb4.png) no-repeat; background-size: 26px 26px; background-position: 0px; }
+.gbsjfl ul li p.sxf4 { background: url(/static/before/images/xgb5.png) no-repeat; background-size: 26px 26px; background-position: 0px; }
+.gbsjfl ul li a { font-size: 14px; color: #999; margin-left: 10px; height: 26px; line-height: 26px; text-align: center; position: relative; }
+.gbsjfl ul a.check { color: #ff6600; }
+.gbsjfl ul li a:hover { color: #ff6600; }
+.gbsjfl ul li a i { color: #fa4c57; width: 7px; display: block; background: url(/static/before/images/xgb39.png) no-repeat; background-size: 100% 100%; height: 7px; position: absolute; top: 0px; right: -9px; }
+.nav_ul { float: left; overflow: auto; width: 960px; height: 50px; margin-top: 10px; }
+.nav_ul li { float: left; display: block; height: 32px; width: 100px; margin-top: 9px; text-align: center; margin-left: 6px; }
+.nav_ul li a { font-size: 16px; color: #333; position: relative; padding: 0px 10px; line-height: 32px; display: inline-block; }
+.nav_ul li.check { background: #ff6600; color: #fff; border-radius: 16px; }
+.nav_ul li.check a { color: #fff; }
+.nav_ul li:hover { background: #ff6600; color: #fff; border-radius: 16px; }
+.nav_ul li:hover a { color: #fff; }
+.nav_ul li a i { color: #fa4c57; width: 8px; display: block; background: url(/static/before/images/xgb39.png) no-repeat; background-size: 100% 100%; height: 8px; position: absolute; top: 5px; right: 0px; }
+.gbcont1 { width: 1200px; margin: 0 auto; }
+.gbco11 { zoom: 1; clear: both; overflow: hidden; margin-left: 240px; }
+.gbco11 li { width: 232px; height: 308px; position: relative; float: left; overflow: hidden; margin-left: 8px; }
+.gbco11 li a.gbco1ig { display: block; width: 232px; height: 308px; }
+.gbco11 li a.gbco1ig img { display: block; width: 100%; }
+.gbco11 li .gbco1dv { position: absolute; bottom: -47px; left: 0px; width: 192px; height: 150px; overflow: hidden; padding: 20px; display: bloch; transition: all 0.6s; }
+.gbco11 li:hover .gbco1dv { bottom: 0px !important; }
+.gbco11 li:hover .gbco1ck { display: block !important; }
+.gbco11 li .gbco1dv label { background: #fc4936; color: #fff; display: block; width: 60px; font-size: 12px; height: 20px; line-height: 20px; border-radius: 5px; text-align: center; margin-top: 10px; }
+.gbco11 li .gbco1dv>a { font-size: 23px; color: #fff; font-weight: bold; height: 40px; line-height: 40px; white-space: nowrap; overflow: hidden; }
+.gbco11 li .gbco1dv>p { font-size: 15px; color: #fff; height: 22px; line-height: 22px; white-space: nowrap; overflow: hidden; }
+.gbco11 li .gbco1dv a.gbco1ck { border: 1px solid #fff; width: 160px; height: 32px; display: block; font-size: 16px; font-weight: normal; text-align: center; margin: 10px auto; line-height: 32px; border-radius: 16px; display: none; }
+.gbco11 li .gbco1dv1 { background: url(/static/before/images/xgb33.png) repeat; }
+.gbco11 li .gbco1dv2 { background: url(/static/before/images/xgb34.png) repeat; }
+.gbco11 li .gbco1dv3 { background: url(/static/before/images/xgb35.png) repeat; }
+.gbco11 li .gbco1dv4 { background: url(/static/before/images/xgb31.png) repeat; }
+.gbfr .out { width: 264px; height: 62px; margin: 0px auto; position: relative; }
+.gbfr .out .img { display: block; overflow: auto; width: 264px; height: 62px; }
+.gbfr .out .img li { position: absolute; top: 0; left: 0; display: none; width: 264px; height: 62px; }
+.gbfr .out .img li a { display: block; position: relative; }
+.gbfr .out .img li a img { display: block; width: 264px; height: 62px; z-index: 1; }
+.gbfr .out .num { position: absolute; bottom: -3px; right: 0px; font-size: 0px; text-align: center; width: 19px; overflow: hidden; display: block; }
+.gbfr .out .num li { width: 19px; height: 19px; background: #ededed; color: #333; text-align: center; line-height: 19px; display: block; font-size: 12px; margin-bottom: 3px; cursor: pointer; }
+.gbfr .out .num li.active { background: #fd9e20; color: #fff }
+.gbfr .out .btn { position: absolute; top: 50%; margin-top: -50px; width: 30px; height: 100px; color: #fff; text-align: center; line-height: 100px; font-size: 40px; display: none; cursor: pointer; }
+.gbfr .out:hover .btn { display: block; }
+.gbfr .out .left { left: 0; background-image: url(/static/before/images/xgb16.png); background-repeat: no-repeat; background-position: 0px; }
+.gbfr .out .right { right: 0; background-image: url(/static/before/images/xgb17.png); background-repeat: no-repeat; background-position: 0px; }
+.gbfr .out .left:hover { background-image: url(/static/before/images/xgb16-h.png); }
+.gbfr .out .right:hover { background-image: url(/static/before/images/xgb17-h.png); }
+.outl5 .btn { display: none !important; }
+.inco9l-1 .outl3 { margin-top: 25px; }
+/*20190211*/
+.gbhq { display: block; width: 196px; height: 66px; margin: 10px 0px 0px 10px; }
+.gbsecdivaa { margin-left: 20px !important; width: 535px; }
+.gbsearch { width: 535px; }
+.gbsearch .inp_text { width: 425px; }

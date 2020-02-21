@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PrivilegeDao">
+    <select id="findMenuById" resultType="com.entity.Menu">
+        select *
+        from menu
+        where id = #{id}
+    </select>
+    <select id="getAllMenus" resultType="com.entity.Menu">
+        select *
+        from menu
+    </select>
+
+    <delete id="deleteRolePrivilege">
+        delete
+        from role_privilege
+        where role_id = #{roleId}
+    </delete>
+
+    <insert id="insertRolePrivilege">
+        <foreach collection="privileges" item="privilege" separator=";">
+            insert into role_privilege(role_id,privilege_id) values(#{roleId},#{privilege.id})
+        </foreach>
+
+    </insert>
+</mapper>

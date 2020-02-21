@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserInfoDao">
+    <select id="getAll" resultType="com.entity.UserInfo">
+      select uid,username,uage,uphone,uaddress,usex
+      from UserInfo order by uid
+    </select>
+    <select id="getUserInfoUid" resultType="com.entity.UserInfo">
+        select uid,username,uage,uphone,uaddress,usex
+      from UserInfo where uid=#{uid}
+    </select>
+    <insert id="insertUserInfo">
+        insert into UserInfo(username,uage,uphone,uaddress,usex)
+        values(#{username},#{uage},#{uphone},#{uaddress},#{usex})
+    </insert>
+    <update id="updateUserInfo">
+        update UserInfo set username=#{username},
+        uage=#{uage},uphone=#{uphone},uaddress=#{uaddress},
+        usex=#{usex} where uid=#{uid}
+    </update>
+    <delete id="deleteUserInfo">
+        delete from UserInfo where uid=#{uid}
+    </delete>
+</mapper>

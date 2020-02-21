@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ProductTypeDao">
+    <select id="getAllProductType" resultType="com.entity.ProductType">
+        select tid,typeName from ProductType order by tId
+    </select>
+    <select id="getProductType" resultType="com.entity.ProductType">
+        select tid,typeName from ProductType
+    </select>
+    <update id="updateType">
+        update ProductType set typeName=#{typeName}
+        where tid=#{tid}
+    </update>
+    <select id="getProductTypeId" resultType="com.entity.ProductType">
+        select tid,typeName from ProductType where tid=#{tid}
+    </select>
+    <delete id="deleteTypeId">
+        delete from ProductType where tid=#{tid}
+    </delete>
+    <insert id="insertProductType">
+        insert into ProductType(typeName) values (#{typeName})
+    </insert>
+</mapper>

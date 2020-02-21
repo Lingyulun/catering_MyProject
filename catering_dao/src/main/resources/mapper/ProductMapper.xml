@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ProductDao">
+    <select id="getAllProducts" resultType="com.entity.Product" >
+        select pid, pname, psalary, ptype, pdesc, pimage,pcount from product
+        where pname like '%${pname}%'
+    </select>
+
+    <select id="getAllProduct" resultType="com.entity.Product" >
+       select pid,pname,psalary,ptype,pdesc,pimage,pcount from product
+    </select>
+
+
+    <select id="getProductpId" resultType="com.entity.Product">
+        select pid,pname,psalary,ptype,pdesc,pimage from product where
+        pid=#{pid}
+    </select>
+
+    <select id="getProductAll" resultType="com.entity.Product">
+        select pid,pname,psalary,ptype,pimage from Product where ptype=#{ptype}
+        order by pid
+    </select>
+
+
+
+
+    <insert id="insertProduct">
+        insert into Product(pname,psalary,ptype,pdesc,pimage,pcount)
+        values (#{pname},#{psalary},#{ptype},#{pdesc},#{pimage},#{pcount})
+    </insert>
+
+<!--    事务得到产品的数量，如果产品数量为1条时,产品类型和产品同时删除-->
+    <select id="getCount" resultType="java.lang.Integer">
+       select count(0) from product where ptype=#{ptype}
+    </select>
+
+    <update id="updateProduct">
+        update Product set pname=#{pname},psalary=#{psalary},
+        ptype=#{ptype},pdesc=#{pdesc},pimage=#{pimage},
+        pcount=#{pcount} where pid=#{pid}
+    </update>
+    <delete id="deleteProduct">
+        delete from Product where pid=#{pid}
+    </delete>
+    <delete id="deleteProductType">
+        delete from product where ptype=#{ptype}
+    </delete>
+
+</mapper>

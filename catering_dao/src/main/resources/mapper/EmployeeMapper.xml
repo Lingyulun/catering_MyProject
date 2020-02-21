@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EmployeeDao">
+    <select id="getAll" resultType="com.entity.Employee">
+        select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate
+        from employee order by eid
+    </select>
+    <select id="getEmployeeInfo" resultType="com.entity.Employee">
+        select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate
+        from employee where ename like '%${ename}%' order  by eid
+    </select>
+    <insert id="insertEmp">
+        insert into employee(ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate)
+        values (#{ename},#{egender},#{eidcard},#{ephone},#{eaddress},#{edeptid},#{ejodlevelid},#{edegindate})
+    </insert>
+    <update id="updateEmp">
+        update employee set ename=#{ename},egender=#{egender},
+            eidcard=#{eidcard},ephone=#{ephone},eaddress=#{eaddress},
+            edeptid=#{edeptid},ejodlevelid=#{ejodlevelid},edegindate=#{edegindate}
+        where eid=#{eid}
+    </update>
+    <select id="getById" resultType="com.entity.Employee">
+         select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate
+        from employee where eid=#{eid}
+    </select>
+    <delete id="deleteEmp">
+        delete from employee where eid=#{eid}
+    </delete>
+</mapper>

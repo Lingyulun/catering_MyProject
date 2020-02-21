@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserRoleDao">
+    <select id="UserRolegetAll" resultType="com.entity.User">
+        select u.*,r.name as grade from user_role
+            inner join user u on user_role.user_id = u.id
+            left join role r on r.id = user_role.role_id;
+    </select>
+</mapper>

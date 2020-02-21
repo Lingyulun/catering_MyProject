@@ -1,0 +1,17 @@
+@charset "utf-8";
+body { margin: 0px; padding: 0; font-size: 12px; list-style: none; color: #666; font-family: "\5FAE\8F6F\96C5\9ED1", SimSun, Arial, Helvetica, sans-serif; background: #f7f7f7; }
+h1, h2, h3, h4, ul, ol, li, dl, dd, dt, p, form, input, select, label, div { margin: 0px; padding: 0; font-size: 12px; list-style: none; color: #666; }
+i, b, em { font-style: normal; }
+a:link { color: #666666; text-decoration: none }
+a:visited { color: #666666; text-decoration: none }
+a:hover { color: #ff0000; text-decoration: none }
+a:active { color: #666666; text-decoration: none }
+.red a:link, .red a:visited { color: #f73a4e; }
+.red a:hover, .red a:active { color: #f73a4e; }
+.cuti { font-weight: bold; }
+.zoom { clear: both; zoom: 1; overflow: hidden; }
+.clearfix:after { display: table; content: ""; clear: both; }
+.clearfix { zoom: 1 }
+img { border: 0 }
+.fl { float: left }
+.fr { float: right; }
