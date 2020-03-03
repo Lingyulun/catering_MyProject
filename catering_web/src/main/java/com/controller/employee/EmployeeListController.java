@@ -30,6 +30,17 @@ public class EmployeeListController {
         model.addAttribute("page",pageInfo);
         return "Employee/list";
     }
+
+
+    @RequestMapping("/list2")
+    public String listAll2(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
+                          @RequestParam(value = "pageSize",required = false,defaultValue = "4") int pageSize, Model model){
+        List<Employee> employees=employeeService.getAll(pageNum,pageSize);
+        PageInfo pageInfo=new PageInfo(employees);
+        model.addAttribute("page",pageInfo);
+        return "Employee/list2";
+    }
+
     @RequestMapping("/listEmployee")
     public String list(@RequestParam(value = "ename",required = false) String ename,
                        @RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
@@ -71,7 +82,7 @@ public class EmployeeListController {
             return "Employee/update";
         }
         employeeService.updateEmp(employeeEntity);
-        return "redirect:/catering/list";
+        return "redirect:/catering/list2";
     }
     /*得到修改的Id*/
     @RequestMapping("/getById")

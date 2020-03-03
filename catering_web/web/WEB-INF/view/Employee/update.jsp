@@ -18,14 +18,14 @@
 <div class="panel admin-panel">
     <div class="panel-head"><strong><span class="icon-pencil-square-o"></span>修改人员信息</strong></div>
     <div class="body-content">
-        <form method="post" class="form-x" action="/catering/update">
-            <input type="hidden" class="input" name="eid" value="${employee.eid}"/>
+        <form  class="form-x" action="/catering/update" method="post">
+            <input type="hidden" class="input"  name="eid" value="${employee.eid}"/>
             <div class="form-group">
                 <div class="label">
                     <label>姓名：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="ename" value="${employee.ename}"/>
+                    <input type="text" class="input"  name="ename" value="${employee.ename}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                     <label>身份证号：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="eidcard" value="${employee.eidcard}"/>
+                    <input type="text" class="input"  name="eidcard" value="${employee.eidcard}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                     <label>手机号码：</label>
                 </div>
                 <div class="field">
-                    <input type="number" class="input" name="ephone" value="${employee.ephone}"/>
+                    <input type="number" class="input"  name="ephone" value="${employee.ephone}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     <label>地址：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="eaddress" value="${employee.eaddress}" />
+                    <input type="text" class="input"  name="eaddress" value="${employee.eaddress}" />
                     <div class="tips"></div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                     <label>部门：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="edeptid" value="${employee.edeptid}"/>
+                    <input type="text" class="input"  name="edeptid" value="${employee.edeptid}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                     <label>职称：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="ejodlevelid" value="${employee.ejodlevelid}"/>
+                    <input type="text" class="input"  name="ejodlevelid" value="${employee.ejodlevelid}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                     <label>入职时间：</label>
                 </div>
                 <div class="field">
-                    <input type="text" class="input" name="edegindate" value="${employee.edegindate}"/>
+                    <input type="text" class="input"  name="edegindate" value="${employee.edegindate}"/>
                     <div class="tips"></div>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                     <label></label>
                 </div>
                 <div class="field">
-                    <button class="button bg-main icon-check-square-o" type="submit"> 修改</button>
+                    <button class="button bg-main icon-check-square-o"  type="submit"> 修改</button>
                     <button class="button bg-main " type="reset"> 重置</button>
                 </div>
             </div>

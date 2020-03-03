@@ -69,12 +69,4 @@ public class UserInfoController {
         model.addAttribute("userInfoById",userInfo);
         return "userInfo/update";
     }
-    /*@RequestMapping("/getById")
-    public ModelAndView getById(int uid){
-        ModelAndView model=new ModelAndView();
-        UserInfo userInfo=userInfoService.getUserInfoUid(uid);
-        model.setViewName("userInfo/update");
-        model.addObject("userInfoById",userInfo);
-        return model;
-    }*/
 }

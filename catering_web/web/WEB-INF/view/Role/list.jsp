@@ -10,49 +10,81 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
+
     <script src="/static/bootstrap/js/bootstrap.js"></script>
     <link href="/static/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet"/>
     <link href="/static/bootstrap/css/pintuer.css" type="text/css" rel="stylesheet"/>
     <link href="/static/bootstrap/css/admin.css" type="text/css" rel="stylesheet"/>
-
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <%--  <link href="/static/css/style.css" rel="stylesheet">--%>
     <link href="/static/css/bootstrapStyle/bootstrapStyle.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/backgroundStyle/css/font.css">
+    <link rel="stylesheet" href="/static/backgroundStyle/css/xadmin.css">
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/backgroundStyle/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/backgroundStyle/js/xadmin.js"></script>
+
 
 </head>
 <body>
-
-
-<section id="main-content">
-    <section class="wrapper">
-        <table class="table table-striped table-advance table-hover">
-            <thead>
+<div class="x-nav">
+      <span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">演示</a>
+        <a>
+          <cite>导航元素</cite></a>
+      </span>
+    <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+        <i class="layui-icon" style="line-height:30px">ဂ</i></a>
+</div>
+<div class="x-body">
+    <table class="layui-table">
+        <thead>
+        <tr>
+            <th>
+                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+            </th>
+            <th>编号</th>
+            <th>角色名称</th>
+            <th>角色描述</th>
+            <th>操作</th>
+        </thead>
+        <tbody>
+        <c:forEach items="${role}" var="r">
             <tr>
-                <th>编号</th>
-                <th>角色名称</th>
-                <th>角色描述</th>
-                <th>操作</th>
+                <td>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                </td>
+                <td>${r.id }</td>
+                <td>${r.name }</td>
+                <td>${r.description }</td>
+                <td>
+                    <button class="btn btn-success bt-xs accredit" value="${r.id }" data-toggle="modal" >授权</button>
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${role}" var="r">
-                <tr>
-                    <td>${r.id }</td>
-                    <td>${r.name }</td>
-                    <td>${r.description }</td>
-                    <td>
-                        <button class="btn btn-success bt-xs accredit" value="${r.id }" data-toggle="modal" >授权</button>
-                    </td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </section>
-</section>
+        </c:forEach>
+        </tbody>
+    </table>
+</div>
+<script>
+    layui.use('laydate', function(){
+        var laydate = layui.laydate;
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#start' //指定元素
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+            elem: '#end' //指定元素
+        });
+    });
+
+</script>
 
 
-<%--弹出修改模块框--%>
+<%--弹出权限模态框--%>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

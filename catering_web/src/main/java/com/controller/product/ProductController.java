@@ -1,32 +1,22 @@
 package com.controller.product;
 
-import com.entity.Employee;
 import com.entity.Product;
 import com.entity.ProductType;
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.ProductService;
 import com.service.ProductTypeService;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * @author 挥霍的人生
