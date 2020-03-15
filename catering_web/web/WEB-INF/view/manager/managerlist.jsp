@@ -37,9 +37,7 @@
     </div>
     <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-
         <button class="layui-btn" onclick="x_admin_show('添加用户','/managers/addView')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
     </xblock>
     <table class="layui-table">
         <thead>
@@ -64,9 +62,10 @@
                     <td>${managers.MName}</td>
                     <td>${managers.MPhone}</td>
                     <td>${managers.MUsername}</td>
+                    <%--name代表的是角色--%>
                     <td>${managers.name}</td>
                     <td class="td-manage">
-                        <a title="编辑"  onclick="x_admin_show('编辑','admin-edit.html')" href="javascript:;">
+                        <a title="编辑"  onclick="x_admin_show('编辑','/managers/getUpdateManagerId?mId=${managers.MId}')" href="javascript:;">
                             <i class="layui-icon">&#xe642;</i>
                         </a>
                         <a title="删除" onclick="member_del(this,'${managers.MId}')" href="javascript:;">
@@ -80,7 +79,7 @@
     <div class="page">
         <div class="pagination">
             <a class="num" href="/managers/listAll?pageNum=1">首页</a>
-            <a class="prev" href="">&lt;&lt;</a>
+            <a class="prev" href="/managers/listAll?pageNum=${managers.prePage}">&lt;&lt;</a>
             <c:forEach items="${managers.navigatepageNums}" var="p">
                 <a class="num" href="/managers/listAll?pageNum=${p}"> ${p}</a>
             </c:forEach>

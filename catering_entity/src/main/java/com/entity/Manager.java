@@ -15,5 +15,6 @@ public class Manager {
   private String  mPhone;//电话
   private String mUsername;//用户名
   private String  mPassword;//密码
+  private int role;
   private String name;  //角色
 }

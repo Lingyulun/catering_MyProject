@@ -9,87 +9,118 @@
 <html>
 <head>
     <title>Title</title>
-    <script src="/static/bootstrap/css/admin"></script>
-    <link href="/static/bootstrap/css/pintuer.css" type="text/css" rel="stylesheet"/>
-    <script src="/static/bootstrap/js/pintuer.js"></script>
     <script src="/static/js/jquery-3.3.1.min.js"></script>
-
+    <link rel="stylesheet" href="/static/backgroundStyle/css/font.css">
+    <link rel="stylesheet" href="/static/backgroundStyle/css/xadmin.css">
+    <script type="text/javascript" src="/static/backgroundStyle/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/backgroundStyle/js/xadmin.js"></script>
 </head>
 <body>
-<div class="panel admin-panel">
-    <div class="panel-head"><strong><span class="icon-pencil-square-o"></span>添加用户信息</strong></div>
-    <div class="body-content">
-        <form class="form-x" action="/user/update" method="post">
-            <div class="form-group">
-                <div class="label">
-                    <label>编号：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="uid" id="uid" value="${userInfoById.uid}"/>
-                    <div class="tips"></div>
-                </div>
+<div class="x-body">
+    <form class="layui-form" id="form2">
+        <div class="layui-form-item">
+            <label for="uid" class="layui-form-label">
+                <span class="x-red">*</span>编号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text"  id="uid" name="uid" readonly="readonly" required="" lay-verify="required"
+                       autocomplete="off" value="${userInfoById.uid}" class="layui-input">
             </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>姓名：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="username" id="username" value="${userInfoById.username}"/>
-                    <div class="tips"></div>
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="username" class="layui-form-label">
+                <span class="x-red">*</span>姓名
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="${userInfoById.username}" id="username" name="username" required="" lay-verify=""
+                       autocomplete="off" class="layui-input">
             </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="ubirthday" class="layui-form-label">
+                <span class="x-red">*</span>出生日期
+            </label>
+            <div class="layui-input-inline">
+                <input type="date" value="${userInfoById.ubirthday}" id="ubirthday" name="ubirthday" required="" lay-verify=""
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux">
+                <span class="x-red">*</span>
+            </div>
+        </div>
 
-
-            <div class="form-group">
-                <div class="label">
-                    <label>年龄：</label>
-                </div>
-                <div class="field">
-                    <input type="number" class="input" name="uage" id="uage" value="${userInfoById.uage}"/>
-                    <div class="tips"></div>
-                </div>
+        <div class="layui-form-item">
+            <label for="uage" class="layui-form-label">
+                <span class="x-red">*</span>年龄
+            </label>
+            <div class="layui-input-inline">
+                <input type="number" value="${userInfoById.uage}" id="uage" name="uage" required="" lay-verify=""
+                       autocomplete="off" class="layui-input">
             </div>
-
-            <div class="form-group">
-                <div class="label">
-                    <label>手机号码：</label>
-                </div>
-                <div class="field">
-                    <input type="number" class="input" name="uphone" id="uphone" value="${userInfoById.uphone}"/>
-                    <div class="tips"></div>
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="uphone" class="layui-form-label">
+                <span class="x-red">*</span>电话号码
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="${userInfoById.uphone}" id="uphone" name="uphone" required="" lay-verify="uphone"
+                       autocomplete="off" class="layui-input">
             </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>地址：</label>
-                </div>
-                <div class="field">
-                    <input type="text" class="input" name="uaddress" id="uaddress" class="uaddress" value="${userInfoById.uaddress}" />
-                    <div class="tips"></div>
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <label for="uaddress" class="layui-form-label">
+                <span class="x-red">*</span>地址
+            </label>
+            <div class="layui-input-inline">
+                <input type="text" value="${userInfoById.uaddress}" id="uaddress" name="uaddress" required="" lay-verify=""
+                       autocomplete="off" class="layui-input">
             </div>
-            <div class="form-group">
-                <div class="label">
-                    <label>性别：</label>
-                </div>
-                <div class="field" id="usernameId" name="${userInfoById.usex}">
-                    <input type="radio" name="usex" class="usex" id="man" value="男" /> 男
-                    <input type="radio" name="usex" class="usex" id="women" value="女"/> 女
-                </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label"><span class="x-red">*</span>性别</label>
+            <div class="layui-input-block" id="usernameId" name="${userInfoById.usex}">
+                <input type="radio" name="usex" lay-skin="primary" id="man"  title="男" value="男"/>
+                <input type="radio" name="usex" lay-skin="primary" id="women" title="女" value="女"/>
             </div>
-            <div class="form-group">
-                <div class="label">
-                    <label></label>
-                </div>
-                <div class="field">
-                    <button class="button bg-main icon-check-square-o" type="submit" id="updateUserInfo"> 修改</button>
-                    <button class="button bg-main " type="reset"> 重置</button>
-                </div>
-            </div>
-        </form>
-    </div>
+        </div>
+        <div class="layui-form-item">
+            <button  class="layui-btn" lay-filter="add" lay-submit="">
+                修改
+            </button>
+        </div>
+    </form>
 </div>
 <script type="text/javascript">
+    layui.use(['form','layer'], function(){
+        $ = layui.jquery;
+        var form = layui.form
+            ,layer = layui.layer;
+        form.verify({
+            uphone: [/^1\d{10}$/, "请输入正确的手机号"]
+        });
+        //监听提交
+        form.on('submit(add)', function(data){
+            console.log(data);
+            //发异步，把数据提交给php
+            $.ajax({
+                //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "/user/update" ,//url
+                data: $('#form2').serialize(),
+                success:function () {
+                    window.location.href='/user/listAll'
+                }
+            });
+            layer.alert("修改成功,请刷新数据", {icon: 6},function () {
+                // 获得frame索引
+                var index = parent.layer.getFrameIndex(window.name);
+                //关闭当前frame
+                parent.layer.close(index);
+            });
+            return false;
+        });
+    });
     $(function(){
         var s=$("#usernameId").attr("name");
         if (s== "女") {
@@ -97,23 +128,6 @@
         } else {
             document.getElementById('man').checked = true;
         }
-       /* $("#updateUserInfo").click(function () {
-            $.ajax({
-                url:"/user/update",
-                type:"post",
-                data:{
-                    uid:$("#uid").val(),
-                    username:$("#user").val(),
-                    uage:$("#uage").val(),
-                    uphone:$("#uphone").val(),
-                    uaddress:$("#uaddress").val(),
-                    usex:$(".usex").val()
-                },
-                success:function (data) {
-                    location.href="/user/userInfoAll";
-                }
-            });
-        })*/
     });
 </script>
 </body>

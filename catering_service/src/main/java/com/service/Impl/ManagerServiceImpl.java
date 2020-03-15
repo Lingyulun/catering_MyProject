@@ -31,8 +31,13 @@ public class ManagerServiceImpl implements ManagerService {
     }
 
     @Override
-    public void updateManager(Manager manager) {
-        managerDao.updateManager(manager);
+    public Manager getManagerUpdateId(int mId) {
+        return managerDao.getManagerUpdateId(mId);
+    }
+
+    @Override
+    public Manager updateManager(Manager manager) {
+       return managerDao.updateManager(manager);
     }
 
     @Override

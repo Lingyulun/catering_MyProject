@@ -21,5 +21,8 @@
         update dept set deptName=#{deptName}
         where deptId=#{deptId}
     </update>
-
+<!--填充到员工添加的部门的下拉框-->
+    <select id="getInsertQuery" resultType="com.entity.Dept">
+        select deptId,deptName from dept;
+    </select>
 </mapper>

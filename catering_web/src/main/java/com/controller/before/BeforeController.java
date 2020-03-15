@@ -38,6 +38,6 @@ public class BeforeController {
 
         PageInfo voPageInfo=new PageInfo(products);
         model.addAttribute("pco",voPageInfo);
-        return "ProductShow/index1";
+        return "ProductShow/productShowIndex";
     }
 }

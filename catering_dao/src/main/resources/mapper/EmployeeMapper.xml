@@ -3,29 +3,58 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.EmployeeDao">
+    <!--查询所有员工信息-->
     <select id="getAll" resultType="com.entity.Employee">
-        select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate
-        from employee order by eid
+        select eid, ename,egender,eidcard,ephone,eaddress,d.deptName as edeptname,ejodlevelid,edegindate
+        from employee left join dept d on employee.edeptid = d.deptId order by eid
     </select>
-    <select id="getEmployeeInfo" resultType="com.entity.Employee">
-        select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate
-        from employee where ename like '%${ename}%' order  by eid
+    <!--根据入职日期和员工名查询-->
+    <select id="getFuzzQueryEmployee" resultType="com.entity.Employee">
+        select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate from employee
+        <where>
+            <if test="ename!=null and edegindate!=null ">
+                edegindate &gt; '${edegindate}' and ename like '%${ename}%' order  by eid
+            </if>
+        </where>
     </select>
+    <!--根据入职日期查询员工-->
+    <select id="getFuzzDateEmployee" resultType="com.entity.Employee">
+         select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate from employee
+         where edegindate &gt; '${edegindate}'
+         order by eid
+    </select>
+    <!--根据员工名查询-->
+    <select id="getFuzzNameEmployee" resultType="com.entity.Employee">
+         select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate from employee
+         where ename like '%${ename}%' order by eid
+    </select>
+<!--添加员工信息-->
     <insert id="insertEmp">
         insert into employee(ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate)
         values (#{ename},#{egender},#{eidcard},#{ephone},#{eaddress},#{edeptid},#{ejodlevelid},#{edegindate})
     </insert>
+    <!--修改信息-->
     <update id="updateEmp">
         update employee set ename=#{ename},egender=#{egender},
             eidcard=#{eidcard},ephone=#{ephone},eaddress=#{eaddress},
             edeptid=#{edeptid},ejodlevelid=#{ejodlevelid},edegindate=#{edegindate}
         where eid=#{eid}
     </update>
+    <!--得到修改对应行的id-->
     <select id="getById" resultType="com.entity.Employee">
-         select eid, ename,egender,eidcard,ephone,eaddress,edeptid,ejodlevelid,edegindate
-        from employee where eid=#{eid}
+         select eid, ename,egender,eidcard,ephone,eaddress,edeptid,d.deptName as edeptname,ejodlevelid,edegindate
+        from employee left join dept d on employee.edeptid = d.deptId
+        where eid=#{eid}
     </select>
+    <!--单条删除数据-->
     <delete id="deleteEmp">
         delete from employee where eid=#{eid}
+    </delete>
+<!--批量删除-->
+    <delete id="delAllEmployee"  parameterType = "int">
+        delete from employee where eid in
+        <foreach collection="array"  item="eids" open="(" separator="," close=")"  >
+            #{eids}
+        </foreach>
     </delete>
 </mapper>

@@ -32,7 +32,7 @@ public class ProductTypeServiceImpl implements ProductTypeService {
     public Boolean updateType(ProductType productType) {
        return productTypeDao.updateType(productType);
     }
-
+    //查询产品类型信息填充到下拉框
     @Override
     public List<ProductType> getProductType() {
         return productTypeDao.getProductType();

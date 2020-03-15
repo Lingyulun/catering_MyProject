@@ -14,7 +14,7 @@
 
 
     <select id="getProductpId" resultType="com.entity.Product">
-        select pid,pname,psalary,ptype,pdesc,pimage from product where
+        select pid,pname,psalary,ptype,pdesc,pimage,pcount from product where
         pid=#{pid}
     </select>
 
@@ -47,5 +47,4 @@
     <delete id="deleteProductType">
         delete from product where ptype=#{ptype}
     </delete>
-
 </mapper>

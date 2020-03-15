@@ -11,4 +11,7 @@ public interface DeptDao {
     void deleteDeptId(int deptId);
     void updateDept(Dept dept);
 
+    //填充到员工添加界面部门的下拉框查询
+    List<Dept> getInsertQuery();
+
 }

@@ -35,4 +35,10 @@ public class DeptServiceImpl implements DepetService {
     public void updateDept(Dept dept) {
         deptDao.updateDept(dept);
     }
+
+    //员工添加界面，填充部门添加的下拉框
+    @Override
+    public List<Dept> getInsertQuery() {
+        return deptDao.getInsertQuery();
+    }
 }

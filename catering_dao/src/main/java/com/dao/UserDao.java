@@ -23,6 +23,4 @@ public interface UserDao {
 
     void insertUserRole(@Param("userId") String userId, @Param("roleId") String roleId);
 
-
-
 }

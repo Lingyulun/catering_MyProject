@@ -15,7 +15,8 @@ public class Employee {
     private String eidcard; //身份证号
     private String ephone;    //电话号码
     private String eaddress; //联系地址
-    private String edeptid; //所属部门
+    private int edeptid; //部门id
+    private String edeptname; //所属部门
     private String ejodlevelid; //职称
     private String edegindate;    //入职日期
 }

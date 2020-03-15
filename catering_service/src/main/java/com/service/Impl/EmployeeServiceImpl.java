@@ -6,6 +6,7 @@ import com.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,12 +27,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     //模糊查询员工信息
 
     @Override
-    public List<Employee> getEmployeeInfo(String ename,int pageNum,int pageSize) {
-        return employeeDao.getEmployeeInfo(ename,pageNum,pageSize);
+    public List<Employee> getFuzzQueryEmployee(String edegindate,String ename,int pageNum, int pageSize) {
+        if(edegindate!=null && "null".equals(ename)){
+           return employeeDao.getFuzzDateEmployee(edegindate, pageNum, pageSize);
+        }else if("null".equals(edegindate) && ename!=null){
+           return employeeDao.getFuzzNameEmployee(ename, pageNum, pageSize);
+        }else {
+            return employeeDao.getFuzzQueryEmployee(edegindate,ename,pageNum, pageSize);
+        }
     }
 
     //添加员工
-
     @Override
     public void insertEmp(Employee employee) {
         employeeDao.insertEmp(employee);
@@ -56,5 +62,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteEmp(int eid) {
         employeeDao.deleteEmp(eid);
+    }
+
+    @Override
+    public int delAllEmployee(Integer[] eids) {
+        return employeeDao.delAllEmployee(eids);
     }
 }

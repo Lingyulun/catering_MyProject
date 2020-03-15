@@ -33,9 +33,6 @@ public class Login {
             if(user.getUsername().equals(username) && user.getPassword().equals(password) && session.getAttribute("code").equals(txtCode)){
                 System.out.println(username);
                 System.out.println(password);
-
-
-
                 session.setAttribute("username",username);
                 session.setAttribute("password",password);
                 return "index";

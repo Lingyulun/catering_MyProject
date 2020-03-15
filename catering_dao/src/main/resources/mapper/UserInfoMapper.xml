@@ -4,20 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserInfoDao">
     <select id="getAll" resultType="com.entity.UserInfo">
-      select uid,username,uage,uphone,uaddress,usex
+      select uid,username,ubirthday,uage,uphone,uaddress,usex
       from UserInfo order by uid
     </select>
     <select id="getUserInfoUid" resultType="com.entity.UserInfo">
-        select uid,username,uage,uphone,uaddress,usex
+        select uid,username,ubirthday,uage,uphone,uaddress,usex
       from UserInfo where uid=#{uid}
     </select>
     <insert id="insertUserInfo">
-        insert into UserInfo(username,uage,uphone,uaddress,usex)
-        values(#{username},#{uage},#{uphone},#{uaddress},#{usex})
+        insert into UserInfo(username,ubirthday,uage,uphone,uaddress,usex)
+        values(#{username},#{ubirthday},#{uage},#{uphone},#{uaddress},#{usex})
     </insert>
     <update id="updateUserInfo">
         update UserInfo set username=#{username},
-        uage=#{uage},uphone=#{uphone},uaddress=#{uaddress},
+        ubirthday=#{ubirthday},uage=#{uage},
+        uphone=#{uphone},uaddress=#{uaddress},
         usex=#{usex} where uid=#{uid}
     </update>
     <delete id="deleteUserInfo">

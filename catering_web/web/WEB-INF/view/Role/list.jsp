@@ -41,9 +41,6 @@
     <table class="layui-table">
         <thead>
         <tr>
-            <th>
-                <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
-            </th>
             <th>编号</th>
             <th>角色名称</th>
             <th>角色描述</th>
@@ -52,9 +49,6 @@
         <tbody>
         <c:forEach items="${role}" var="r">
             <tr>
-                <td>
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-                </td>
                 <td>${r.id }</td>
                 <td>${r.name }</td>
                 <td>${r.description }</td>
