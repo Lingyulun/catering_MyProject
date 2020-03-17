@@ -14,13 +14,12 @@
     <link href="/static/bootstrap/css/pintuer.css" type="text/css" rel="stylesheet"/>
     <script src="/static/bootstrap/js/pintuer.js"></script>--%>
 
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js"></script>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/static/backgroundStyle/css/font.css">
     <link rel="stylesheet" href="/static/backgroundStyle/css/xadmin.css">
-    <script type="text/javascript" src="/static/backgroundStyle/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/static/backgroundStyle/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/static/backgroundStyle/js/xadmin.js"></script>
-
 </head>
 <body>
 <%--<div class="panel admin-panel">
@@ -133,7 +132,7 @@
                 <span class="x-red">*</span>id
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="eid" name="eid" value="${employee.eid}" required=""
+                <input type="text" id="eid" name="eid" readonly="readonly" value="${employee.eid}" required=""
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -202,7 +201,7 @@
                 <select class="form-control" id="edeptid" name="edeptid">
                     <c:forEach items="${depts}" var="depts" >
                         <c:choose>
-                            <c:when test="${depts.deptId == employees.edeptid}">
+                            <c:when test="${depts.deptId == employee.edeptid}">
                                 <option selected  value="${depts.deptId}">${depts.deptName}</option>
                             </c:when>
                             <c:otherwise>
@@ -215,7 +214,7 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="x-red">*</span>职位</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <select name="ejodlevelid" id="ejolevelidChoose">
                     <option value="经理">经理</option>
                     <option value="副经理">副经理</option>
@@ -236,7 +235,7 @@
                 <span class="x-red">*</span>入职时间
             </label>
             <div class="layui-input-inline">
-                <input type="date" id="edegindate" name="edegindate" required=""
+                <input type="date" id="edegindate" name="edegindate" value="${employee.edegindate}" required=""
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -248,8 +247,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label">
             </label>
-            <button  class="layui-btn" id="Employeeadd" lay-filter="addEmployee" lay-submit="">
-                增加
+            <button  class="layui-btn" id="Employeeadd" lay-filter="update" lay-submit="">
+                修改
             </button>
         </div>
     </form>
@@ -272,8 +271,8 @@
                 //几个参数需要注意一下
                 type: "POST",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "/managers/update" ,//url
-                data: $('#formManagerupdate').serialize(),
+                url: "/catering/update" ,//url
+                data: $('#updateEmployee').serialize(),
             });
             layer.alert("修改成功,请刷新数据", {icon: 6},function () {
                 // 获得frame索引
@@ -300,8 +299,7 @@
                 break;
             }
         }
-        alert("${depts.deptId}");
-        alert("${depts.deptName}");
+        $("#edegindate").val("${employee.edegindate}");
     });
 </script>
 </body>

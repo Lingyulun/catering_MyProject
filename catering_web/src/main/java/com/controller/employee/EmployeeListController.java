@@ -33,20 +33,12 @@ public class EmployeeListController {
     private DepetService deptService;
 
     @RequestMapping("/list")
-    public String listAll(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
-                          @RequestParam(value = "pageSize",required = false,defaultValue = "4") int pageSize, Model model){
-        List<Employee> employees=employeeService.getAll(pageNum,pageSize);
-        PageInfo pageInfo=new PageInfo(employees);
-        model.addAttribute("page",pageInfo);
-        return "Employee/list";
-    }
-    @RequestMapping("/list2")
     public String listAll2(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
                           @RequestParam(value = "pageSize",required = false,defaultValue = "4") int pageSize, Model model){
         List<Employee> employees=employeeService.getAll(pageNum,pageSize);
         PageInfo pageInfo=new PageInfo(employees);
         model.addAttribute("page",pageInfo);
-        return "Employee/list2";
+        return "Employee/list";
     }
 
     @RequestMapping("/listEmployee")
@@ -57,12 +49,15 @@ public class EmployeeListController {
         List<Employee> employees=employeeService.getFuzzQueryEmployee(edegindate,ename,pageNum, pageSize);
         PageInfo pageInfo=new PageInfo(employees);
         model.addAttribute("page",pageInfo);
-        return "Employee/list2";
+        return "Employee/list";
     }
     @RequestMapping("/addView")
-    public String insert(){
-
-        return "Employee/insert";
+    public ModelAndView insert(){
+        ModelAndView modelAndView=new ModelAndView();
+        List<Dept> deptList=deptService.getInsertQuery();
+        modelAndView.addObject("deptsInsert",deptList);
+        modelAndView.setViewName("Employee/insert");
+        return modelAndView;
     }
     @ResponseBody
     @RequestMapping("/insert")
@@ -70,30 +65,17 @@ public class EmployeeListController {
         employeeService.insertEmp(employeeEntity);
         return "redirect:/catering/list";
     }
-    // 跳转到后台界面
-    @RequestMapping("/index")
-    public String index(){
-        return "backgroundIndex";
-    }
-
-    //填充到下拉框，选中对应修改的部门
-    @RequestMapping("/updateView")
-    public String update(){
-        ModelAndView model=new ModelAndView();
-        List<Dept> depts=deptService.getInsertQuery();
-        model.addObject("depts",depts);
-        model.addObject("employees",new Employee());
-        return "Employee/update";
-    }
     @RequestMapping("/update")
-    public String update(@Valid Employee employeeEntity,
+    @ResponseBody
+    public void update(@Valid Employee employeeEntity,
                          BindingResult bindingResult) {
+        ModelAndView modelAndView=new ModelAndView();
         /*绑定数据结果*/
         if(bindingResult.hasErrors()){
-            return "Employee/update";
+            //return "Employee/update";
+           modelAndView.setViewName("Employee/update");
         }
         employeeService.updateEmp(employeeEntity);
-        return "redirect:/catering/list2";
     }
     /*得到修改的Id*/
     @RequestMapping("/getById")
@@ -101,6 +83,10 @@ public class EmployeeListController {
         ModelAndView modelAndView=new ModelAndView();
         Employee employee=employeeService.getById(eid);
         modelAndView.addObject("employee",employee);
+
+        List<Dept> depts=deptService.getInsertQuery();
+        modelAndView.addObject("depts",depts);
+
         modelAndView.setViewName("Employee/update");
         return modelAndView;
     }
@@ -116,4 +102,7 @@ public class EmployeeListController {
        employeeService.delAllEmployee(eids);
        return eids.length;
     }
+
+
+
 }

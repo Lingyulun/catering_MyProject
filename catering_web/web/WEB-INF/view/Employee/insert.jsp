@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>添加员工信息</title>
@@ -127,7 +128,7 @@
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="x-red">*</span>角色</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <select name="egender">
                     <option value="男">男</option>
                     <option value="女">女</option>
@@ -174,10 +175,16 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="x-red">*</span>部门</label>
             <div class="layui-input-block">
-                <select name="edeptid">
+               <%-- <select name="edeptid">
                     <option value="1">销售部</option>
                     <option value="2">管理部</option>
                     <option value="3">调研部</option>
+                </select>--%>
+
+                <select id="edeptid" name="edeptid">
+                    <c:forEach items="${deptsInsert}" var="deptn" >
+                        <option value="${deptn.deptId}">${deptn.deptName}</option>
+                    </c:forEach>
                 </select>
             </div>
         </div>

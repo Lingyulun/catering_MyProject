@@ -10,123 +10,17 @@
 <html>
 <head>
     <title>产品信息</title>
-  <%--  <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/static/js/jquery.min.js"></script>
-    <link href="/static/css/productshow/reset.css" rel="stylesheet" />
-    <link href="/static/css/productshow/iconfont.css" rel="stylesheet" />
-    <link href="/static/css/productshow/index.css" rel="stylesheet" />
---%>
 
 
+    <script src="/static/js/jquery-1.2.4.min.js"></script>
     <link rel="stylesheet" href="/static/backgroundStyle/css/font.css">
     <link rel="stylesheet" href="/static/backgroundStyle/css/xadmin.css">
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <%--<script src="/static/js/jquery-3.3.1.min.js"></script>--%>
     <script type="text/javascript" src="/static/backgroundStyle/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/static/backgroundStyle/js/xadmin.js"></script>
 
-  <%--  <script src="https://cdn.staticfile.org/jquery/1.12.4/jquery.min.js"></script>--%>
 </head>
 <body>
-<%--<div class="RightBox">
-    <div class="PublicContentBox">
-        <!--公用指向页面名字-->
-        <div class="PublicPointToAgeText">
-            <span class="span1"></span> <span class="span2"></span>
-        </div>
-        <!--查询-->
-        <div class="InquireBox clearfix">
-            <div class="InquireleftBox">
-                <form action="${pageContext.request.contextPath}/ProductOperation/productListAll2" class="form form-horizontal">
-                    <div class="Text">产品名称：</div>
-                    <div class="InputDiv">
-                        <input class="phoneInput" placeholder="请输入你需要查询的产品名" name="pname" />
-                    </div>
-                    <div class="PublicBtnIcon Color1Btn fr">
-                        <i class="iconfont icon-icon-chaxun"></i>
-                        <input type="submit" value="查询">
-                    </div>
-
-                </form>
-            </div>
-        </div>
-        <!--表修改-->
-        <div class="InquireTableBox">
-            <div class="headbox">
-                <div class="headboxtext">
-                    <span class="span1">后台管理产品列表</span>
-                </div>
-                <!--批量删除-->
-                <div class="PublicBtnIcon Color5Btn">
-                    <i class="iconfont  icon-shanchu"></i>
-                    <span>批量删除</span>
-                </div>
-
-                <div class="PublicBtnIcon Color2Btn fr Js_edit">
-                    <i class="iconfont icon-changyongtubiao-mianxing-"></i>
-                    <span><a href="/ProductOperation/productAdd"> 添加</a></span>
-                </div>
-            </div>
-            <!--查询到的表格-->
-            <div class="InquireSelectTable">
-                <table class="PublicTableCss">
-                    <thead>
-                    <tr>
-                        <td>
-                            <input id="inputcheck" class="inputcheck" type="checkbox" name="inputcheck" />
-                            <label for="inputcheck"></label>
-                            <span>全选</span>
-                        </td>
-                        <td>ID</td>
-                        <td>名称</td>
-                        <td>价格</td>
-                        <td>类型</td>
-                        <td>介绍</td>
-                        <td>图片</td>
-                        <td>数量</td>
-                        <td>操作</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                       <c:forEach items="${pageInfo.list}" var="product">
-                            <tr>
-                               <td>
-                                   <input id="aa" class="inputcheck" type="checkbox" name="inputcheck" />
-                                   <label for="aa"></label>
-                               </td>
-                               <td>${product.pid}</td>
-                               <td>${product.pname}</td>
-                               <td>${product.psalary}</td>
-                               <td>${product.ptype}</td>
-                               <td>${product.pdesc}</td>
-                               <td><img src="${product.pimage}" width="150px" height="50px"/>
-                               </td><td>${product.pcount}</td>
-                               <td>
-                                   <a href='#' class='edit btn btn-info'  id="typeId">编辑</a>
-                                   <a href="${pageContext.request.contextPath}/ProductOperation/deleteProduct?pid=${product.pid}" class='delete btn btn-danger' >删除</a>
-                               </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-            <div class="PageNumber">
-                <div class="NumbersBox">
-                    <ul class="pagination">
-                        <li><a href="/ProductOperation/productListAll2?pageNum=1"> 首页</a></li>
-                        <li><a href="/ProductOperation/productListAll2?pageNum=${pageInfo.prePage}"> 上一页</a></li>
-                        <c:forEach items="${pageInfo.navigatepageNums}" var="p">
-                            <li><a href="/ProductOperation/productListAll2?pageNum=${p}"> ${p}</a></li>
-                        </c:forEach>
-                        <li><a href="/ProductOperation/productListAll2?pageNum=${pageInfo.nextPage}"> 下一页</a></li>
-                        <li><a href="/ProductOperation/productListAll2?pageNum=${pageInfo.pages}"> 尾页</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>--%>
-
-
 
 
 <div class="x-nav">
@@ -151,6 +45,7 @@
         <button class="layui-btn" onclick="x_admin_show('添加用户','/ProductOperation/productAdd')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
     </xblock>
+
     <table class="layui-table">
         <thead>
         <tr>
@@ -178,8 +73,8 @@
                 <td>${product.psalary}</td>
                 <td>${product.ptype}</td>
                 <td>${product.pdesc}</td>
-                <td><img src="http://localhost:8070/images/Url/${product.pimage}" width="150px" height="50px"/>
-                </td><td>${product.pcount}</td>
+                <td><img src="${product.pimage}" alt="" width="200px" height="80px" class="pimages"/></td>
+                <td>${product.pcount}</td>
                 <td class="td-manage">
                     <a title="编辑"  onclick="x_admin_show('编辑','/ProductOperation/getUpdateProductPid?pid=${product.pid}')" href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
@@ -190,6 +85,12 @@
                 </td>
             </tr>
         </c:forEach>
+        <div id="outerdiv" style="position:fixed;top:0;left:0;background:rgba(0,0,0,0.7);z-index:2000;width:100%;height:100%;display:none;">
+            <!-- 放大后的图片 -->
+            <div id="innerdiv" style="position:absolute;z-index: 2000">
+                <img id="bigimg" style="border:5px solid #fff;" src="" />
+            </div>
+        </div>
         </tbody>
     </table>
     <div class="page">
@@ -204,6 +105,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     layui.use('laydate', function(){
@@ -240,6 +142,58 @@
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
     }
+
+
+
+
+
+    // 图片点击事件
+    $(".pimages").click(function () {
+        enlarge(this);
+    })
+    // 图片放大函数
+    function enlarge(obj) {
+        var _this = $(obj);
+        imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);
+        function imgShow(outerdiv, innerdiv, bigimg, _this) {
+            var src = _this.attr("src"); //获取当前点击的pimg元素中的src属性
+            $(bigimg).attr("src", src); //设置#bigimg元素的src属性
+            /*获取当前点击图片的真实大小，并显示弹出层及大图*/
+            $("<img/>").attr("src", src).load(function () {
+                var windowW = $(window).width(); //获取当前窗口宽度
+                var windowH = $(window).height(); //获取当前窗口高度
+                var realWidth = this.width; //获取图片真实宽度
+                var realHeight = this.height; //获取图片真实高度
+                var imgWidth, imgHeight;
+                var scale = 0.8; //缩放尺寸，当图片真实宽度和高度大于窗口宽度和高度时进行缩放
+                if (realHeight > windowH * scale) { //判断图片高度
+                    imgHeight = windowH * scale; //如大于窗口高度，图片高度进行缩放
+                    imgWidth = imgHeight / realHeight * realWidth; //等比例缩放宽度
+                    if (imgWidth > windowW * scale) { //如宽度扔大于窗口宽度
+                        imgWidth = windowW * scale; //再对宽度进行缩放
+                    }
+                } else if (realWidth > windowW * scale) { //如图片高度合适，判断图片宽度
+                    imgWidth = windowW * scale; //如大于窗口宽度，图片宽度进行缩放
+                    imgHeight = imgWidth / realWidth * realHeight; //等比例缩放高度
+                } else { //如果图片真实高度和宽度都符合要求，高宽不变
+                    imgWidth = realWidth;
+                    imgHeight = realHeight;
+                }
+                $(bigimg).css("width", imgWidth); //以最终的宽度对图片缩放
+                var w = (windowW - imgWidth) / 2; //计算图片与窗口左边距
+                var h = (windowH - imgHeight) / 2; //计算图片与窗口上边距
+                $(innerdiv).css({
+                    "top": h,
+                    "left": w
+                }); //设置#innerdiv的top和left属性
+                $(outerdiv).fadeIn("fast"); //淡入显示#outerdiv及.pimg
+            });
+            $(outerdiv).click(function () { //再次点击淡出消失弹出层
+                $(this).fadeOut("fast");
+            });
+        }
+    }
 </script>
+
 </body>
 </html>

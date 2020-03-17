@@ -74,7 +74,7 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="x-red">*</span>性别</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <select name="usex">
                     <option value="男">男</option>
                     <option value="女">女</option>
