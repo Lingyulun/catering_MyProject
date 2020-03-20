@@ -15,7 +15,6 @@
     <script src="/static/js/jquery-1.2.4.min.js"></script>
     <link rel="stylesheet" href="/static/backgroundStyle/css/font.css">
     <link rel="stylesheet" href="/static/backgroundStyle/css/xadmin.css">
-    <%--<script src="/static/js/jquery-3.3.1.min.js"></script>--%>
     <script type="text/javascript" src="/static/backgroundStyle/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="/static/backgroundStyle/js/xadmin.js"></script>
 
@@ -66,7 +65,7 @@
         <c:forEach items="${pageInfo.list}" var="product">
             <tr>
                 <td>
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${product.pid}'><i class="layui-icon">&#xe605;</i></div>
                 </td>
                 <td>${product.pid}</td>
                 <td>${product.pname}</td>
@@ -95,13 +94,13 @@
     </table>
     <div class="page">
         <div class="pagination">
-            <a class="num" href="/ProductOperation/productListAll2?pageNum=1">首页</a>
-            <a class="prev" href="/ProductOperation/productListAll2?pageNum=${pageInfo.prePage}">&lt;&lt;</a>
+            <a class="num" href="/ProductOperation/productListAll?pageNum=1">首页</a>
+            <a class="prev" href="/ProductOperation/productListAll?pageNum=${pageInfo.prePage}">&lt;&lt;</a>
             <c:forEach items="${pageInfo.navigatepageNums}" var="p">
-                <li><a href="/ProductOperation/productListAll2?pageNum=${p}"> ${p}</a></li>
+                <li><a href="/ProductOperation/productListAll?pageNum=${p}"> ${p}</a></li>
             </c:forEach>
-            <a class="next" href="/ProductOperation/productListAll2?pageNum=${pageInfo.nextPage}">&gt;&gt;</a>
-            <a class="num" href="/ProductOperation/productListAll2?pageNum=${pageInfo.pages}"> 尾页</a>
+            <a class="next" href="/ProductOperation/productListAll?pageNum=${pageInfo.nextPage}">&gt;&gt;</a>
+            <a class="num" href="/ProductOperation/productListAll?pageNum=${pageInfo.pages}"> 尾页</a>
         </div>
     </div>
 </div>
@@ -131,19 +130,22 @@
             layer.msg('已删除!',{icon:1,time:1000});
         });
     }
-
-
-
     function delAll (argument) {
         var data = tableCheck.getData();
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
+            $.ajax({
+                url : "/ProductOperation/delBatchesProduct",
+                data : {
+                    "pids" : data
+                },
+                dataType : "json",
+                async : false
+            });
             layer.msg('删除成功', {icon: 1});
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
     }
-
-
 
 
 

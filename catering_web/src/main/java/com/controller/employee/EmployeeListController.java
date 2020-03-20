@@ -45,12 +45,18 @@ public class EmployeeListController {
     public String list(@RequestParam(value = "edegindate",defaultValue = "null",required = false) String edegindate,
                        @RequestParam(value = "ename",defaultValue = "null",required = false) String ename,
                        @RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
-                       @RequestParam(value = "pageSize",required = false,defaultValue = "100") int pageSize, Model model){
+                       @RequestParam(value = "pageSize",required = false,defaultValue = "20") int pageSize, Model model){
+        System.out.println(edegindate);
         List<Employee> employees=employeeService.getFuzzQueryEmployee(edegindate,ename,pageNum, pageSize);
+
         PageInfo pageInfo=new PageInfo(employees);
         model.addAttribute("page",pageInfo);
         return "Employee/list";
     }
+
+
+
+
     @RequestMapping("/addView")
     public ModelAndView insert(){
         ModelAndView modelAndView=new ModelAndView();
@@ -98,9 +104,14 @@ public class EmployeeListController {
     //批量删除
     @RequestMapping("/delBatchesEmployee")
     @ResponseBody
-    public int delBatchesEmployeeId(@RequestParam(value = "eids[]") Integer[] eids) {
-       employeeService.delAllEmployee(eids);
-       return eids.length;
+    public boolean delBatchesEmployeeId(@RequestParam(value = "eids[]") Integer[] eids) {
+        boolean b= employeeService.delAllEmployee(eids);
+        if(b){
+            System.out.println("delete success");
+        }else{
+            System.out.println("delete failed");
+        }
+        return false;
     }
 
 

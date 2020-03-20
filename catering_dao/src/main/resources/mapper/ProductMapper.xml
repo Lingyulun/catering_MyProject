@@ -3,23 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.ProductDao">
-    <select id="getAllProducts" resultType="com.entity.Product" >
+    <!--模糊查询'%'+空格-->
+    <select id="getNamesProducts" resultType="com.entity.Product" >
         select pid, pname, psalary, ptype, pdesc, pimage,pcount from product
-        where pname like '%${pname}%'
+        order by pid where pname like '%' #{pname} '%'
+
     </select>
 
     <select id="getAllProduct" resultType="com.entity.Product" >
        select pid,pname,psalary,ptype,pdesc,pimage,pcount from product
+       order by pid
     </select>
 
 
+    <!--用于前台添加商品到购物车查询id的信息-->
     <select id="getProductpId" resultType="com.entity.Product">
         select pid,pname,psalary,ptype,pdesc,pimage,pcount from product where
         pid=#{pid}
     </select>
 
     <select id="getProductAll" resultType="com.entity.Product">
-        select pid,pname,psalary,ptype,pimage from Product where ptype=#{ptype}
+        select pid,pname,psalary,ptype,pimage from product where ptype=#{ptype}
         order by pid
     </select>
 
@@ -27,7 +31,7 @@
 
 
     <insert id="insertProduct">
-        insert into Product(pname,psalary,ptype,pdesc,pimage,pcount)
+        insert into product(pname,psalary,ptype,pdesc,pimage,pcount)
         values (#{pname},#{psalary},#{ptype},#{pdesc},#{pimage},#{pcount})
     </insert>
 
@@ -35,16 +39,25 @@
     <select id="getCount" resultType="java.lang.Integer">
        select count(0) from product where ptype=#{ptype}
     </select>
+    <delete id="deleteProductType">
+        delete from product where ptype=#{ptype}
+    </delete>
 
     <update id="updateProduct">
-        update Product set pname=#{pname},psalary=#{psalary},
+        update product set pname=#{pname},psalary=#{psalary},
         ptype=#{ptype},pdesc=#{pdesc},pimage=#{pimage},
         pcount=#{pcount} where pid=#{pid}
     </update>
     <delete id="deleteProduct">
-        delete from Product where pid=#{pid}
+        delete from product where pid=#{pid}
     </delete>
-    <delete id="deleteProductType">
-        delete from product where ptype=#{ptype}
+
+    <!--批量删除产品-->
+    <delete id="delAllProducts"  parameterType = "int">
+        delete from product where pid in
+        <foreach collection="array"  item="pids" open="(" separator="," close=")"  >
+            #{pids}
+        </foreach>
     </delete>
+
 </mapper>

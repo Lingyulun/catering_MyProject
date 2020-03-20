@@ -31,21 +31,19 @@ public class ProductController {
     @Autowired
     private ProductTypeService productTypeService;
     public static final String FILE_DIRECTORY="F:/Test";
-
-
-
-    @RequestMapping("/productListAll2")
+    @RequestMapping("/productListName")
     public String listProducts(@RequestParam(value = "pname",required = false) String pname,@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
-                               @RequestParam(value = "pageSize",required = false,defaultValue = "4") int pageSize, Model model){ ;
-        List<Product> list=productService.getAllProducts(pname,pageNum,pageSize);
+                               @RequestParam(value = "pageSize",required = false,defaultValue = "6") int pageSize, Model model){ ;
+        List<Product> list=productService.getNamesProducts(pname,pageNum,pageSize);
         PageInfo<Product> pageInfo=new PageInfo<Product>(list);
         model.addAttribute("pageInfo",pageInfo);
         return "product/productList";
     }
-
     @RequestMapping("/productListAll")
-    public String listProducts(Model model){ ;
-       List<Product> products=productService.getAllProduct();
+    public String listProducts(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
+                               @RequestParam(value = "pageSize",required = false,defaultValue = "6") int pageSize,
+                               Model model){
+       List<Product> products=productService.getAllProduct(pageNum, pageSize);
         PageInfo<Product> pageInfo=new PageInfo<Product>(products,3);
         model.addAttribute("pageInfo",pageInfo);
         return "product/productList";
@@ -98,6 +96,18 @@ public class ProductController {
         return "redirect:/ProductOperation/productListAll";
     }
 
+    //批量删除
+    @RequestMapping("/delBatchesProduct")
+    @ResponseBody
+    public boolean delBatchesProduct(@RequestParam(value = "pids[]")Integer[] pids) {
+        boolean s= productService.delAllProducts(pids);
+        if(s){
+            System.out.println("success");
+        }else {
+            System.out.println("false");
+        }
+        return false;
+    }
     //修改的pid
     @RequestMapping("/getUpdateProductPid")
     public ModelAndView getById(int pid){

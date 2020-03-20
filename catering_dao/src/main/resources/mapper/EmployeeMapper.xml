@@ -13,23 +13,18 @@
         select eid, ename,egender,eidcard,ephone,eaddress,d.deptName as edeptname,ejodlevelid,edegindate
         from employee left join dept d on employee.edeptid = d.deptId
         <where>
-            <if test="ename!=null and edegindate!=null ">
-                edegindate &gt;= '${edegindate}' and ename like '%${ename}%' order  by eid
-            </if>
+            <choose>
+                <when test="edegindate != 'null' and ename=='null'">
+                    edegindate >= #{edegindate}
+                </when>
+                <when test="ename != 'null' and edegindate=='null'">
+                    ename like '%' #{ename} '%'
+                </when>
+                <otherwise>
+                    ename like '%' #{ename} '%' and edegindate>=#{edegindate}
+                </otherwise>
+            </choose>
         </where>
-    </select>
-    <!--根据入职日期查询员工-->
-    <select id="getFuzzDateEmployee" resultType="com.entity.Employee">
-          select eid, ename,egender,eidcard,ephone,eaddress,d.deptName as edeptname,ejodlevelid,edegindate
-         from employee left join dept d on employee.edeptid = d.deptId
-         where edegindate &gt;=  '${edegindate}'
-         order by eid
-    </select>
-    <!--根据员工名查询-->
-    <select id="getFuzzNameEmployee" resultType="com.entity.Employee">
-         select eid, ename,egender,eidcard,ephone,eaddress,d.deptName as edeptname,ejodlevelid,edegindate
-        from employee left join dept d on employee.edeptid = d.deptId
-         where ename like '%${ename}%' order by eid
     </select>
 <!--添加员工信息-->
     <insert id="insertEmp">

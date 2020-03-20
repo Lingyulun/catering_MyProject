@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>产品展示页面</title>
+    <title>产品显示页面</title>
     <link rel="stylesheet" type="text/css" href="/static/before_product/css/style.css" />
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <script src="/static/before_product/js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
@@ -59,9 +59,6 @@
                 </c:forEach>
                 <a id="first" href=""> 首页</a>
                 <a id="prev" href="">上一页</a>
-                <%--<c:forEach items="${pco.navigatepageNums}" var="p">
-                    <a id="num" href="/beforeInfo?ptype=${products.ptype}&pageNum=${p}"> ${p}</a>
-                </c:forEach>--%>
                 <a id="next" href="">下一页</a>
                 <a id="end" href="">尾页</a>
             </ul>

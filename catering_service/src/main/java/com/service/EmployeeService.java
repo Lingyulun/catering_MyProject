@@ -21,5 +21,5 @@ public interface EmployeeService {
     Employee getById(int eid);
     void deleteEmp(int eid);
     //批量删除
-    int delAllEmployee(Integer[] eids);
+    boolean delAllEmployee(Integer[] eids);
 }

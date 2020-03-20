@@ -120,6 +120,9 @@
     layui.use(['layer', 'form'], function(){
         var layer = layui.layer
             ,form = layui.form;
+
+
+
         form.on('submit(update)', function(data){
             //发异步，把数据提交给php
             layer.alert("修改成功,刷新数据", {icon: 6},function () {

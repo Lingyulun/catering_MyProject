@@ -28,13 +28,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<Employee> getFuzzQueryEmployee(String edegindate,String ename,int pageNum, int pageSize) {
-        if(edegindate!=null && "null".equals(ename)){
-           return employeeDao.getFuzzDateEmployee(edegindate, pageNum, pageSize);
-        }else if("null".equals(edegindate) && ename!=null){
-           return employeeDao.getFuzzNameEmployee(ename, pageNum, pageSize);
-        }else {
-            return employeeDao.getFuzzQueryEmployee(edegindate,ename,pageNum, pageSize);
-        }
+       return employeeDao.getFuzzQueryEmployee(edegindate, ename, pageNum, pageSize);
     }
 
     //添加员工
@@ -65,7 +59,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public int delAllEmployee(Integer[] eids) {
-        return employeeDao.delAllEmployee(eids);
+    public boolean delAllEmployee(Integer[] eids) {
+        boolean b=employeeDao.delAllEmployee(eids);
+        if(b){
+            System.out.println("delete employee success");
+        }else{
+            System.out.println("delete employee failed");
+        }
+        return false;
     }
 }

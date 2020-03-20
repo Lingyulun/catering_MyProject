@@ -154,8 +154,8 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="x-red">*</span>性别</label>
             <div class="layui-input-block" id="egender" name="${employee.egender}">
-                <input type="radio" name="egender" lay-skin="primary" id="man"  title="男" value="女"/>
-                <input type="radio" name="egender" lay-skin="primary" id="women" title="女" value="男"/>
+                <input type="radio" name="egender" lay-skin="primary" id="man"  title="男" value="男"/>
+                <input type="radio" name="egender" lay-skin="primary" id="women" title="女" value="女"/>
             </div>
         </div>
         <div class="layui-form-item">
@@ -175,7 +175,7 @@
                 <span class="x-red">*</span>手机
             </label>
             <div class="layui-input-inline">
-                <input type="text" id="ephone" name="ephone" value="${employee.ephone}" required="" lay-verify="ephone"
+                <input type="number"  id="ephone" name="ephone" value="${employee.ephone}" required="" lay-verify="ephone"
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -223,13 +223,6 @@
                 </select>
             </div>
         </div>
-       <%-- <div class="layui-form-item">
-            <label class="layui-form-label"><span class="x-red">*</span>职位</label>
-            <div class="layui-input-block">
-                <input type="text"  value="${employee.ejodlevelid}" required="" lay-verify="required"
-                       autocomplete="off" class="layui-input">
-            </div>
-        </div>--%>
         <div class="layui-form-item">
             <label for="edegindate" class="layui-form-label">
                 <span class="x-red">*</span>入职时间
@@ -261,7 +254,7 @@
 
         //自定义验证
         form.verify({
-            pass: [/(.+){6,12}$/, '密码必须6到12位']
+            ephone: [/^1\d{10}$/, "请输入正确的手机号"]
         });
         //监听提交
         form.on('submit(update)', function(data){

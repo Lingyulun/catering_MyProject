@@ -16,13 +16,18 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> getAllProducts(String pname,int pageNum,int pageSize) {
-        return productDao.getAllProducts(pname,pageNum,pageSize);
+    public List<Product> getNamesProducts(String pname,int pageNum,int pageSize) {
+        return productDao.getNamesProducts(pname, pageNum, pageSize);
     }
 
     @Override
-    public List<Product> getAllProduct() {
-        return productDao.getAllProduct();
+    public List<Product> getAllProduct(int pageNum,int pageSize) {
+        return productDao.getAllProduct(pageNum, pageSize);
+    }
+
+    @Override
+    public boolean delAllProducts(Integer[] pids) {
+        return productDao.delAllProducts(pids);
     }
 
 
