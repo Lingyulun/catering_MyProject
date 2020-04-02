@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * @author 挥霍的人生
@@ -42,6 +44,14 @@ public class AddToCartController {
             session.setAttribute("cart", cart);
         }
         model.addAttribute("cart",cart);
+        return "viewCart/viewCart";
+    }
+
+    @RequestMapping("/delete")
+    public String deleteCartByBook(int id,HttpSession session,Model model){
+        //获取数的id
+        Cart cart = (Cart)session.getAttribute("cart");
+        cart.removeItems(id); //直接调用 实体类Cart中的removeItems()方法
         return "viewCart/viewCart";
     }
 }

@@ -29,7 +29,7 @@ public class BeforeController {
     public String beforeIndexView(){
         return "before/index";
     }
-    @RequestMapping("/beforeInfo")
+    @RequestMapping("/productShowInfo")
     public String beforeInfo(@RequestParam(value = "ptype",required = false,defaultValue = "1") int ptype, @RequestParam(value = "pageNum",required = false,defaultValue="1") int pageNum,
                              @RequestParam(value = "pageSize",required = false,defaultValue = "4") int pageSize, Model model){
         List<Product> products=productService.getProductAll(ptype,pageNum,pageSize);

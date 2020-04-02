@@ -110,15 +110,15 @@
         </div>
         <ul class="nav_ul">
             <!-- 选中给li添加check类名-->
-            <li><a href="/beforeInfo?ptype=6" title="中西美食" target="_blank">中西美食</a></li>
-            <li><a href="/beforeInfo?ptype=5" title="速食快餐" target="_blank">速食快餐</a></li>
-            <li><a href="/beforeInfo?ptype=3" title="酒水饮料" target="_blank">酒水饮料</a></li>
-            <li><a href="/beforeInfo?ptype=2" title="地方小吃" target="_blank">地方小吃<i></i></a></li>
+            <li><a href="/productShowInfo?ptype=6" title="中西美食" target="_blank">中西美食</a></li>
+            <li><a href="/productShowInfo?ptype=5" title="速食快餐" target="_blank">速食快餐</a></li>
+            <li><a href="/productShowInfo?ptype=3" title="酒水饮料" target="_blank">酒水饮料</a></li>
+            <li><a href="/productShowInfo?ptype=2" title="地方小吃" target="_blank">地方小吃<i></i></a></li>
             <li><a href="#" title="甜点茶myproject@localhost饮" target="_blank">甜点茶饮</a></li>
-            <li><a href="/beforeInfo?ptype=4" title="自助餐厅" target="_blank">自助餐厅</a></li>
-            <li><a href="/beforeInfo?ptype=6" title="经典美味" target="_blank">经典美味</a></li>
-            <li><a href="/beforeInfo?ptype=1" title="特色美食" target="_blank">特色美食</a></li>
-            <li><a href="/beforeInfo?ptype=6" title="先行赔付" target="_blank">先行赔付<i></i></a></li>
+            <li><a href="/productShowInfo?ptype=4" title="自助餐厅" target="_blank">自助餐厅</a></li>
+            <li><a href="/productShowInfo?ptype=6" title="经典美味" target="_blank">经典美味</a></li>
+            <li><a href="/productShowInfo?ptype=1" title="特色美食" target="_blank">特色美食</a></li>
+            <li><a href="/productShowInfo?ptype=6" title="先行赔付" target="_blank">先行赔付<i></i></a></li>
         </ul>
     </div>
 </div>
@@ -126,32 +126,32 @@
 
 <div class="gbcont1">
     <ul class="gbco11">
-        <li> <a href="/beforeInfo?ptype=1"  title="８元汉堡 全天爆单" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201901281531223754335.jpg" alt=""></a>
+        <li> <a href="/productShowInfo?ptype=1"  title="８元汉堡 全天爆单" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201901281531223754335.jpg" alt=""></a>
             <div class="gbco1dv gbco1dv1">
                 <label class="gbco1lb">汉堡</label>
-                <a href="/beforeInfo?ptype=1"  title="" target="_blank">麦塔基汉堡</a>
+                <a href="/productShowInfo?ptype=1"  title="" target="_blank">麦塔基汉堡</a>
                 <p>８元汉堡 全天爆单</p>
-                <a href="/beforeInfo?ptype=1"  title="８元汉堡 全天爆单" target="_blank" class="gbco1ck">立即查看</a> </div>
+                <a href="/productShowInfo?ptype=1"  title="８元汉堡 全天爆单" target="_blank" class="gbco1ck">立即查看</a> </div>
         </li>
-        <li> <a href="/beforeInfo?ptype=2"  title="海鲜零食 万元开店" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201901311435002714771.jpg" alt=""></a>
+        <li> <a href="/productShowInfo?ptype=2"  title="海鲜零食 万元开店" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201901311435002714771.jpg" alt=""></a>
             <div class="gbco1dv gbco1dv2">
                 <label class="gbco1lb">小吃</label>
-                <a href="/beforeInfo?ptype=2"  title="" target="_blank">漫鲸捞汁小海鲜</a>
-                <a href="/beforeInfo?ptype=2"  title="海鲜零食 万元开店" target="_blank" class="gbco1ck">立即查看</a> </div>
+                <a href="/productShowInfo?ptype=2"  title="" target="_blank">漫鲸捞汁小海鲜</a>
+                <a href="/productShowInfo?ptype=2"  title="海鲜零食 万元开店" target="_blank" class="gbco1ck">立即查看</a> </div>
         </li>
-        <li> <a href="/beforeInfo?ptype=7"  title="粗粮煎饼 酥脆好吃" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201901111451162717397.png" alt=""></a>
+        <li> <a href="/productShowInfo?ptype=7"  title="粗粮煎饼 酥脆好吃" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201901111451162717397.png" alt=""></a>
             <div class="gbco1dv gbco1dv3">
                 <label class="gbco1lb">煎饼</label>
                 <a href="#"  title="" target="_blank">石小沫煎饼果儿</a>
                 <p>粗粮煎饼 酥脆好吃</p>
-                <a href="/beforeInfo?ptype=7"  title="粗粮煎饼 酥脆好吃" target="_blank" class="gbco1ck">立即查看</a> </div>
+                <a href="/productShowInfo?ptype=7"  title="粗粮煎饼 酥脆好吃" target="_blank" class="gbco1ck">立即查看</a> </div>
         </li>
-        <li> <a href="/beforeInfo?ptype=4"  title="麻辣海鲜 人手一杯" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201902101827112717806.jpg" alt=""></a>
+        <li> <a href="/productShowInfo?ptype=4"  title="麻辣海鲜 人手一杯" target="_blank" class="gbco1ig"><img src="${pageContext.request.contextPath}/static/before/picture/201902101827112717806.jpg" alt=""></a>
             <div class="gbco1dv gbco1dv4">
                 <label class="gbco1lb">小吃</label>
-                <a href="/beforeInfo?ptype=4"  title="" target="_blank">赶海鲜生即食小海鲜</a>
+                <a href="/productShowInfo?ptype=4"  title="" target="_blank">赶海鲜生即食小海鲜</a>
                 <p>麻辣海鲜 人手一杯</p>
-                <a href="/beforeInfo?ptype=4"  title="麻辣海鲜 人手一杯" target="_blank" class="gbco1ck">立即查看</a> </div>
+                <a href="/productShowInfo?ptype=4"  title="麻辣海鲜 人手一杯" target="_blank" class="gbco1ck">立即查看</a> </div>
         </li>
     </ul>
 </div>
