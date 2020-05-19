@@ -45,8 +45,8 @@
                 <form method="post" id="form1" action="${pageContext.request.contextPath}/viewCart/removeFromCart">
                 <c:forEach items="${cart.items}" var="item">
                             <input type="hidden" name="pid" id="pid" value="${item.p.pid}"/>
-                            <tr>
-                                <td><input type="checkbox" ></td>
+                            <%--<tr>
+                               <td><input type="checkbox" ></td>
                                 <td class="xuhao">${item.p.pid}</td>
                                 <td><img src="${item.p.pimage}" width="150px" height="100px"></td>
                                 <td class="foodsPrice">${item.p.psalary}</td>
@@ -57,18 +57,35 @@
                                 </td>
                                 <td class="smallPrice">${item.subTotal}</td>
                                 <td class="td-manage">
-                                    <%--<a title="删除" onclick="deleteCart(this,'/viewCart/delete?id=${item.p.pid}')" href="javascript:;">
+                                    &lt;%&ndash;<a title="删除" onclick="deleteCart(this,'/viewCart/delete?id=${item.p.pid}')" href="javascript:;">
                                         <i class="layui-icon">&#xe640;</i>
-                                    </a>--%>
+                                    </a>&ndash;%&gt;
                                     <a href="${pageContext.request.contextPath}/viewCart/delete?id=${item.p.pid}">  <i class="layui-icon">&#xe640;</i></a>
+                                </td>
+                            </tr>--%>
+
+                            <tr>
+
+                                <td><input type="checkbox" ></td>
+                                <td class="xuhao">${item.p.pid}</td>
+                                <td><img src="${item.p.pimage}" width="150px" height="100px"></td>
+                                <td>
+                                    <li>
+                                        <input type="button" value="-" />
+                                        <strong>${item.qty}</strong>
+                                        <input type="button" value="+" />
+                                        单价：<em>${item.p.psalary}元</em>
+                                        小计：<span>${item.subTotal}元</span>
+                                    </li>
                                 </td>
                             </tr>
 
                     </c:forEach>
                     <tr>
-
+                        商品合计共：<span>0</span>件，共花费了：<span>0</span>元<br />
                         <td> <input type="submit" value="购买" class="btn btn-primary btn-danger"></td>
-                        <td colspan="6">总计:<input type="text" class="totalPrice" value="${cart.total}"/></td>
+                        <%--<td colspan="6">总计:<input type="text" class="totalPrice" value="${cart.total}"/></td>
+                    --%>
                     </tr>
                 </form>
 
@@ -107,34 +124,54 @@
             alert($form.prop("action"));
             $form[0].submit();
         });
-        $(".add").click(function(){			//产品数量添加，则对应的商品总价格上升
-            var num = $(this).siblings("input");
-            num.val(parseInt(num.val())+1);//对应商品数量+1
-            var goodsPrice =parseInt($(this).parent().siblings(".foodsPrice").text());//得到对应商品价格
-            var smallPrice=parseInt($(this).parent().siblings(".smallPrice").text());//得到对应的商品小计
-            $(this).parent().siblings(".smallPrice").text(smallPrice+goodsPrice);
-            var total=goodsPrice+smallPrice;
-            $(".totalPrice").val(total);     	 //数量+1时得到商品总计加上对应商品数量的价格
-            //var ns=$(this).parents("").siblings("tr").children("td").next().find('input').val();
-        });
-        $(".minus").click(function(){			//产品数量添加，则对应的商品总价格上升
-            var num = $(this).siblings("input");
-            num.val(parseInt(num.val())-1);//对应商品数量-1
-            if(num.val()<=0){	//当商品数量为0时不能继续再减少数量
-                $(this).siblings("input").val(0);	//数量框为0
-                $(this).parent().siblings(".smallPrice").text(0);//商品小计为0;
-            }else{
-                var goodsPrices =parseInt($(this).parent().siblings(".foodsPrice").text());//得到对应商品价格
-                var smallPrices=parseInt($(this).parent().siblings(".smallPrice").text());  //得到对应的商品小计
-                $(this).parent().siblings(".smallPrice").text(smallPrices-goodsPrices);	//得到
-               // var n = parseInt($(".totalPrice").text());
 
-                var n = parseInt("${cart.total}");
-                $(this).parents("tr").find("td .totalPrice").text(n-goodsPrices);
-                //$(".totalPrice").val(n-goodsPrices);
+
+        var aLi = document.getElementsByTagName("li");
+        var aStrong = document.getElementsByTagName("strong");
+        var aEm = document.getElementsByTagName("em");
+        var oP = document.getElementsByTagName("p")[0];
+        var aSpan = oP.getElementsByTagName("span");
+        var number = 0;
+        var price = 0;
+        for(var i=0;i<aLi.length;i++){
+            Price(aLi[i]);
+        }
+        function Price(obj){
+            var aIn = obj.getElementsByTagName("input");
+            var oStrong = obj.getElementsByTagName("strong")[0];
+            var oEm = obj.getElementsByTagName("em")[0];
+            var oSpan = obj.getElementsByTagName("span")[0];
+            aIn[0].onclick = function(){
+                if(oStrong.innerHTML>0){
+                    number--;
+                    oStrong.innerHTML--;
+                    price -= parseFloat(oEm.innerHTML);
+                    oSpan.innerHTML = parseFloat(oEm.innerHTML)*oStrong.innerHTML + "元";
+                    aSpan[0].innerHTML = number;
+                    aSpan[1].innerHTML = price;
+                    aSpan[2].innerHTML = getMax();
+                }
             }
+            aIn[1].onclick = function(){
+                number++;
+                oStrong.innerHTML++;
+                price += parseFloat(oEm.innerHTML);
+                oSpan.innerHTML = parseFloat(oEm.innerHTML)*oStrong.innerHTML + "元";
+                aSpan[0].innerHTML = number;
+                aSpan[1].innerHTML = price;
+                aSpan[2].innerHTML = getMax();
+            }
+        }
+        function getMax(){
+            var arr = [];
+            for(var i=0;i<aStrong.length;i++){
+                if(aStrong[i].innerHTML!=0){
+                    arr.push(parseFloat(aEm[i].innerHTML));
+                }
+            }
+            return aStrong == 0 ? 0 : arr.sort(function(a,b){return b-a})[0];
+        }
 
-        });
     })
 </script>
 </body>

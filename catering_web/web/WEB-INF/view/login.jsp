@@ -37,14 +37,14 @@
     <p class="info">登录中心</p>
     <div class="user-info">
         <div class="admin"><img src="${path}/static/images/admin.png"></div>
-        <form class="layui-form" id="login" method="post" action="${pageContext.request.contextPath}/background/loginManager">
+        <form class="layui-form" id="login" method="post" action="${pageContext.request.contextPath}/managers/loginUser">
             <div class="layui-form-item">
                 <label class="layui-form-label">用户名:</label>
-                <input type="text" name="username" id="mUsername" autofocus="autofocus" style="ime-mode:disabled" required lay-verify="required" aautocomplete="off" class="layui-input larry-input" placeholder="请输入账号" autocomplete="off">
+                <input type="text" name="mUsername" id="mUsername" autofocus="autofocus" style="ime-mode:disabled" required lay-verify="required" aautocomplete="off" class="layui-input larry-input" placeholder="请输入账号" autocomplete="off">
             </div>
             <div class="layui-form-item" id="password">
                 <label class="layui-form-label">密码:</label>
-                <input type="password" name="password" id="mPassword" style="ime-mode:disabled" required lay-verify="required|password" aautocomplete="off" class="layui-input larry-input" placeholder="请输入密码" autocomplete="off">
+                <input type="password" name="mPassword" id="mPassword" style="ime-mode:disabled" required lay-verify="required|password" aautocomplete="off" class="layui-input larry-input" placeholder="请输入密码" autocomplete="off">
             </div>
             <div class="layui-form-item larry-verfiy-code" id="larry_code">
                 <input type="text" maxlength="4" name="txtCode" id="txtCode" class="layui-input larry-input" required lay-verify="required" placeholder="输入验证码">

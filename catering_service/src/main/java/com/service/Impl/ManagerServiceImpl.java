@@ -13,8 +13,14 @@ import java.util.List;
  */
 @Service
 public class ManagerServiceImpl implements ManagerService {
-    @Autowired
+   /* @Autowired
     private ManagerDao managerDao;
+
+    @Override
+    public List<Manager> LoginAll(String mUsername, String password) {
+        return managerDao.LoginAll(mUsername, password);
+    }
+
     @Override
     public List<Manager> getAllManager(int pageNum,int pageSize) {
         return managerDao.getAllManager(pageNum, pageSize);
@@ -27,7 +33,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public Manager addManager(Manager manager) {
-       return managerDao.addManager(manager);
+        return managerDao.addManager(manager);
     }
 
     @Override
@@ -37,7 +43,7 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public Manager updateManager(Manager manager) {
-       return managerDao.updateManager(manager);
+        return managerDao.updateManager(manager);
     }
 
     @Override
@@ -47,8 +53,8 @@ public class ManagerServiceImpl implements ManagerService {
 
     @Override
     public int delBatchesManager(Integer[] sids) {
-       return managerDao.delBatchesManager(sids);
+        return managerDao.delBatchesManager(sids);
     }
-
+*/
 
 }

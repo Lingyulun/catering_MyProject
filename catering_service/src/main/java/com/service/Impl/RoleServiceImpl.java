@@ -35,7 +35,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public List<Menu> getRolePrivilege(String roleId) {
-        return roleDao.getMenusByRoleId(roleId);
+    public List<Menu> getRolePrivilege(String role_id) {
+        return roleDao.getMenusByRoleId(role_id);
     }
 }

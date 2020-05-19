@@ -2,17 +2,13 @@
   Created by IntelliJ IDEA.
   User: 挥霍的人生
   Date: 2019/12/11
-  Time: 9:46
+  Time: 10:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-   <%-- <script src="/static/bootstrap/css/admin"></script>
-    <link href="/static/bootstrap/css/pintuer.css" type="text/css" rel="stylesheet"/>
-    <script src="/static/bootstrap/js/pintuer.js"></script>--%>
-
+    <title>客户信息修改</title>
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="/static/backgroundStyle/css/font.css">
     <link rel="stylesheet" href="/static/backgroundStyle/css/xadmin.css">
@@ -21,13 +17,22 @@
 </head>
 <body>
 <div class="x-body">
-    <form class="layui-form" id="formAdd">
+    <form class="layui-form" id="form2">
+        <div class="layui-form-item">
+            <label for="uid" class="layui-form-label">
+                <span class="x-red">*</span>编号
+            </label>
+            <div class="layui-input-inline">
+                <input type="text"  id="uid" name="uid" readonly="readonly" required="" lay-verify="required"
+                       autocomplete="off" value="${userInfoById.uid}" class="layui-input">
+            </div>
+        </div>
         <div class="layui-form-item">
             <label for="username" class="layui-form-label">
                 <span class="x-red">*</span>姓名
             </label>
             <div class="layui-input-inline">
-                <input type="text"  id="username" name="username" required="" lay-verify=""
+                <input type="text" value="${userInfoById.username}" id="username" name="username" required="" lay-verify=""
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -36,7 +41,7 @@
                 <span class="x-red">*</span>出生日期
             </label>
             <div class="layui-input-inline">
-                <input type="date"  id="ubirthday" name="ubirthday" required="" lay-verify=""
+                <input type="date" value="${userInfoById.ubirthday}" id="ubirthday" name="ubirthday" required="" lay-verify=""
                        autocomplete="off" class="layui-input">
             </div>
             <div class="layui-form-mid layui-word-aux">
@@ -49,7 +54,7 @@
                 <span class="x-red">*</span>年龄
             </label>
             <div class="layui-input-inline">
-                <input type="number"  id="uage" name="uage" required="" lay-verify=""
+                <input type="number" value="${userInfoById.uage}" id="uage" name="uage" required="" lay-verify=""
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -58,7 +63,7 @@
                 <span class="x-red">*</span>电话号码
             </label>
             <div class="layui-input-inline">
-                <input type="text"  id="uphone" name="uphone" required="" lay-verify="uphone"
+                <input type="text" value="${userInfoById.uphone}" id="uphone" name="uphone" required="" lay-verify="uphone"
                        autocomplete="off" class="layui-input">
             </div>
         </div>
@@ -67,23 +72,20 @@
                 <span class="x-red">*</span>地址
             </label>
             <div class="layui-input-inline">
-                <input type="text"  id="uaddress" name="uaddress" required="" lay-verify=""
+                <input type="text" value="${userInfoById.uaddress}" id="uaddress" name="uaddress" required="" lay-verify=""
                        autocomplete="off" class="layui-input">
             </div>
         </div>
-
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="x-red">*</span>性别</label>
-            <div class="layui-input-inline">
-                <select name="usex">
-                    <option value="男">男</option>
-                    <option value="女">女</option>
-                </select>
+            <div class="layui-input-block" id="usernameId" name="${userInfoById.usex}">
+                <input type="radio" name="usex" lay-skin="primary" id="man"  title="男" value="男"/>
+                <input type="radio" name="usex" lay-skin="primary" id="women" title="女" value="女"/>
             </div>
         </div>
         <div class="layui-form-item">
             <button  class="layui-btn" lay-filter="add" lay-submit="">
-                添加
+                修改
             </button>
         </div>
     </form>
@@ -93,7 +95,6 @@
         $ = layui.jquery;
         var form = layui.form
             ,layer = layui.layer;
-        //自定义验证规则
         form.verify({
             uphone: [/^1\d{10}$/, "请输入正确的手机号"]
         });
@@ -105,10 +106,13 @@
                 //几个参数需要注意一下
                 type: "POST",//方法类型
                 dataType: "json",//预期服务器返回的数据类型
-                url: "/user/insert" ,//url
-                data: $('#formAdd').serialize(),
+                url: "/client/update" ,//url
+                data: $('#form2').serialize(),
+                success:function () {
+                    window.location.href='/client/clientInfoAll'
+                }
             });
-            layer.alert("添加成功", {icon: 6},function () {
+            layer.alert("修改成功,请刷新数据", {icon: 6},function () {
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame
@@ -116,6 +120,14 @@
             });
             return false;
         });
+    });
+    $(function(){
+        var s=$("#usernameId").attr("name");
+        if (s== "女") {
+            document.getElementById('women').checked = true;
+        } else {
+            document.getElementById('man').checked = true;
+        }
     });
 </script>
 </body>

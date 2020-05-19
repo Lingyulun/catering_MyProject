@@ -7,8 +7,9 @@ import java.util.Date;
 /**
  * @author 挥霍的人生
  */
+//客户表
 @Data
-public class UserInfo {
+public class client {
     private int uid;
     private String username;
     private String ubirthday;

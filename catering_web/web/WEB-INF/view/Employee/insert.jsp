@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="x-body">
-<form action="" method="">
+<form id="formEmployee">
     <div class="layui-form-item">
         <label for="ename" class="layui-form-label">
             <span class="x-red">*</span>姓名
@@ -111,11 +111,11 @@
             <select id="city" name="city" onchange="getDistrict()">
                 <option value="0">所在市</option>
             </select>
-            <select id="district" name="district" onclick="getTown()">
-                <option value="0">所在区</option>
+            <select id="district" name="district" onchange="getTown()">
+                <option value="0">所在区/县</option>
             </select>
-            <input type="button" id="testAddress" value="点击查看被选项目">
-            <input type="text" id="eaddress" name="eaddress"/>
+            <%--把上面的下拉框值放入此文本框读取--%>
+            <input type="hidden" id="eaddress" name="eaddress"/>
         </div>
     </div>
 
@@ -133,7 +133,7 @@
     <div class="layui-form-item">
         <label class="layui-form-label"><span class="x-red">*</span>部门</label>
         <div class="layui-input-inline">
-            <select name="ejodlevelid">
+            <select id="ejodlevelid" name="ejodlevelid">
                 <option value="经理">总经理</option>
                 <option value="副经理">副经理</option>
                 <option value="技术总监">技术总监</option>
@@ -175,14 +175,23 @@
 
         //监听提交
         form.on('submit(addEmployee)', function(data){
-            console.log(data);
+
             //发异步，把数据提交给php
             $.ajax({
                 //几个参数需要注意一下
                 type: "POST",//方法类型
-                dataType: "json",//预期服务器返回的数据类型
                 url: "/catering/insert" ,//url
-                data: $('#formEmployee').serialize(),
+               /* async : true,*///query中ajax方法有个属性async用于控制同步和异步,默认是true(同步),即ajax请求默认是异步请求,有时项目中会用到AJAX同步
+                data:$('#formEmployee').serialize(),//使用serialize()提交form数据
+                dataType:'json',
+                success:function(data){
+                    console.log(data);
+                    alert("success");
+                },
+                error:function () {
+                    alert("failed,查看身份证号是否输入正确");
+                    window.location.reload();
+                }
             });
             layer.alert("增加成功,请刷新数据", {icon: 6},function () {
                 // 获得frame索引
@@ -191,17 +200,11 @@
                 parent.layer.close(index);
             });
             return false;
+
+
         });
     });
 
-    $(function () {
-        var province= $("#province option:checked").text();
-        var city = $("#city option:checked").text();
-        var strict=$("#district option:checked").text();
-        var address=province+city+strict;
-        $("#eaddress").val(address);
-        alert("被选项目的显示值："+address);
-    })
 
     function getCity(){//城市
         //获得省份下拉框的对象
@@ -233,7 +236,19 @@
             sltDistrict[i+1]=new Option(cityDistrict[i],cityDistrict[i]);
         }
     }
-
+    function getTown() {
+        var province= $("#province option:checked").text();
+        var city = $("#city option:checked").text();
+        var strict=$("#district option:checked").text();
+        var address=province+city+strict;
+        if(province == city == strict){
+            $("#eaddress").val(province);
+        }else if(province!=city && city==strict){
+            $("#eaddress").val(province+city);
+        }else {
+            $("#eaddress").val(address);
+        }
+    }
 </script>
 
 

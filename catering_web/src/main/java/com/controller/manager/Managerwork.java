@@ -3,6 +3,7 @@ package com.controller.manager;
 import com.entity.Employee;
 import com.entity.Manager;
 import com.entity.RoleEntity;
+import com.entity.User;
 import com.github.pagehelper.PageInfo;
 import com.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -23,8 +25,27 @@ import java.util.List;
 @Controller
 @RequestMapping("/managers")
 public class Managerwork {
-    @Autowired
+    /*@Autowired
     private ManagerService managerService;
+
+    //登录
+    @RequestMapping("/loginManager")
+    public String doLogin(String mUsername, String mPassword, String txtCode, HttpSession session){
+        List<Manager> managers=managerService.LoginAll(mUsername,mPassword);
+        for (Manager login : managers) {
+            if(login.getMUsername().equals(mUsername) && login.getMPassword().equals(mPassword) && session.getAttribute("code").equals(txtCode)){
+                System.out.println(mUsername);
+                System.out.println(mPassword);
+                session.setAttribute("mUsername",mUsername);
+                session.setAttribute("mPassword",mPassword);
+                return "index";
+            }else {
+                System.out.println("用户不存在");
+            }
+        }
+        return "login";
+    }
+
     //查询所有分页
     @RequestMapping("/listAll")
     public String listManager(@RequestParam(value = "pageNum",required = false,defaultValue = "1") int pageNum,
@@ -83,5 +104,5 @@ public class Managerwork {
     public int delBatchesManagerID(@RequestParam(value = "sids[]") Integer[] sids) {
         managerService.delBatchesManager(sids);
         return sids.length;
-    }
+    }*/
 }

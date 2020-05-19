@@ -2,26 +2,26 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dao.UserInfoDao">
-    <select id="getAll" resultType="com.entity.UserInfo">
+<mapper namespace="com.dao.ClientInfoDao">
+    <select id="getAll" resultType="com.entity.client">
       select uid,username,ubirthday,uage,uphone,uaddress,usex
-      from UserInfo order by uid
+      from client order by uid
     </select>
-    <select id="getUserInfoUid" resultType="com.entity.UserInfo">
+    <select id="getUserInfoUid" resultType="com.entity.client">
         select uid,username,ubirthday,uage,uphone,uaddress,usex
-      from UserInfo where uid=#{uid}
+      from client where uid=#{uid}
     </select>
     <insert id="insertUserInfo">
-        insert into UserInfo(username,ubirthday,uage,uphone,uaddress,usex)
+        insert into client(username,ubirthday,uage,uphone,uaddress,usex)
         values(#{username},#{ubirthday},#{uage},#{uphone},#{uaddress},#{usex})
     </insert>
     <update id="updateUserInfo">
-        update UserInfo set username=#{username},
+        update client set username=#{username},
         ubirthday=#{ubirthday},uage=#{uage},
         uphone=#{uphone},uaddress=#{uaddress},
         usex=#{usex} where uid=#{uid}
     </update>
     <delete id="deleteUserInfo">
-        delete from UserInfo where uid=#{uid}
+        delete from client where uid=#{uid}
     </delete>
 </mapper>

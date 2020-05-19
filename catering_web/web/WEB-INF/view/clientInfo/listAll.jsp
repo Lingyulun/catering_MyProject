@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>客户信息</title>
     <script src="/static/js/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="/static/backgroundStyle/css/font.css">
     <link rel="stylesheet" href="/static/backgroundStyle/css/xadmin.css">
@@ -45,20 +45,20 @@
             <th>操作</th>
         </thead>
         <tbody>
-        <c:forEach items="${pageUserInfoAll.list}" var="userInfo">
+        <c:forEach items="${pageUserInfoAll.list}" var="client">
             <tr>
-                <td>${userInfo.uid}</td>
-                <td>${userInfo.username}</td>
-                <td>${userInfo.ubirthday}</td>
-                <td>${userInfo.uage}</td>
-                <td>${userInfo.uphone}</td>
-                <td>${userInfo.uaddress}</td>
-                <td>${userInfo.usex}</td>
+                <td>${client.uid}</td>
+                <td>${client.username}</td>
+                <td>${client.ubirthday}</td>
+                <td>${client.uage}</td>
+                <td>${client.uphone}</td>
+                <td>${client.uaddress}</td>
+                <td>${client.usex}</td>
                 <td>
-                    <a title="编辑"  onclick="x_admin_show('编辑','/user/getById?uid=${userInfo.uid}')" href="javascript:;">
+                    <a title="编辑"  onclick="x_admin_show('编辑','/client/getById?uid=${client.uid}')" href="javascript:;">
                         <i class="layui-icon">&#xe642;</i>
                     </a>
-                    <a title="删除" onclick="member_del(this,'${userInfo.uid}')" href="javascript:;">
+                    <a title="删除" onclick="member_del(this,'${client.uid}')" href="javascript:;">
                         <i class="layui-icon">&#xe640;</i>
                     </a>
                 </td>
@@ -68,13 +68,13 @@
     </table>
     <div class="page">
         <div class="pagination">
-            <a class="num" href="/user/userInfoAll?pageNum=1"> 首页</a>
-            <a class="prev" href="/user/userInfoAll?pageNum=${pageUserInfoAll.prePage}">&lt;&lt;</a>
+            <a class="num" href="/client/clientInfoAll?pageNum=1"> 首页</a>
+            <a class="prev" href="/client/clientInfoAll?pageNum=${pageUserInfoAll.prePage}">&lt;&lt;</a>
             <c:forEach items="${pageUserInfoAll.navigatepageNums}" var="p">
-                <li><a href="/user/userInfoAll?pageNum=${p}"> ${p}</a></li>
+                <li><a href="/client/clientInfoAll?pageNum=${p}"> ${p}</a></li>
             </c:forEach>
-            <a class="next" href="/user/userInfoAll?pageNum=${pageUserInfoAll.nextPage}"> &gt;&gt;</a>
-            <a href="/user/userInfoAll?pageNum=${pageUserInfoAll.pages}"> 尾页</a>
+            <a class="next" href="/client/clientInfoAll?pageNum=${pageUserInfoAll.nextPage}"> &gt;&gt;</a>
+            <a href="/client/clientInfoAll?pageNum=${pageUserInfoAll.pages}"> 尾页</a>
         </div>
     </div>
 </div>
@@ -96,7 +96,7 @@
     /*用户-删除*/
     function member_del(obj,id){
         layer.confirm('确认要删除吗？',function(index){
-            document.location="/user/delete?uid="+id
+            document.location="/client/delete?uid="+id
             $(obj).parents("tr").remove();
             layer.msg('已删除!',{icon:1,time:1000});
         });

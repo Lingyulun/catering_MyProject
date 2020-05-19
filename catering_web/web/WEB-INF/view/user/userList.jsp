@@ -27,11 +27,11 @@
                             <th>角色名称</th>
                             <th>角色描述</th>
                         </tr>
-                        <c:forEach items="${allUser}" var="userInfo">
+                        <c:forEach items="${allUser}" var="client">
                             <tr>
-                                <td>${userInfo.id}</td>
-                                <td>${userInfo.username}</td>
-                                <td>${userInfo.name}</td>
+                                <td>${client.id}</td>
+                                <td>${client.username}</td>
+                                <td>${client.name}</td>
                             </tr>
                         </c:forEach>
                     </table>

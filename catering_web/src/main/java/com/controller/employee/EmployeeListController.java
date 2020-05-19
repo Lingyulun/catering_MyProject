@@ -2,23 +2,25 @@ package com.controller.employee;
 
 import com.entity.Dept;
 import com.entity.Employee;
+import com.entity.Message;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageInfo;
 import com.service.DepetService;
 import com.service.EmployeeService;
-import com.service.Impl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import sun.invoke.empty.Empty;
-
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Date;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 /**
@@ -70,13 +72,40 @@ public class EmployeeListController {
         modelAndView.setViewName("Employee/insert");
         return modelAndView;
     }
-
-    @ResponseBody
     @RequestMapping("/insert")
-    public String insert(@Valid Employee employeeEntity) {
-        employeeService.insertEmp(employeeEntity);
-        return "redirect:/catering/list";
+    @ResponseBody
+    protected void doGet(HttpServletRequest request, HttpServletResponse response,@Valid Employee employeeEntity) throws ServletException, IOException {
+        //response.setContentType("application/json;charset=utf-8");
+        //判断身份证号是否正确
+        if(IdCardExpUtil.isValidatedAllIdcard(employeeEntity.getEidcard())==true){
+            System.out.println(IdCardExpUtil.isValidatedAllIdcard(employeeEntity.getEidcard()));
+            employeeService.insertEmp(employeeEntity);
+            PrintWriter printWriter=response.getWriter();
+            Message message=new Message("200","添加成功","null");
+            ObjectMapper objectMapper=new ObjectMapper();
+            String json= objectMapper.writeValueAsString(message);
+            printWriter.write(json);
+        }else {
+            System.out.println(IdCardExpUtil.isValidatedAllIdcard(employeeEntity.getEidcard()));
+           // response.getWriter().println("<script>alert('查看身份证号是否填写正确')</script>");
+          //  request.getRequestDispatcher("/catering/addView").forward(request,response);
+        }
     }
+
+   /* @ResponseBody
+    @RequestMapping("/insert")
+    public void insert(@Valid Employee employeeEntity) {
+        //判断身份证号是否正确
+        if(IdCardExpUtil.isValidatedAllIdcard(employeeEntity.getEidcard())==true){
+            employeeService.insertEmp(employeeEntity);
+            System.out.println(IdCardExpUtil.isValidatedAllIdcard(employeeEntity.getEidcard()));
+        }else {
+            ModelAndView modelAndView=new ModelAndView();
+            modelAndView.setViewName("");
+            System.out.println(IdCardExpUtil.isValidatedAllIdcard(employeeEntity.getEidcard()));
+            System.out.println("failed");
+        }
+    }*/
     @RequestMapping("/update")
     @ResponseBody
     public void update(@Valid Employee employeeEntity,

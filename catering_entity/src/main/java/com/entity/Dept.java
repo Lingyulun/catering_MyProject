@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * @author 挥霍的人生
+ * 部门
  */
 @Data
 public class Dept {
